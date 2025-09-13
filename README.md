@@ -1,7 +1,7 @@
  ### Portfolio de Anton Nikulin
 
 ## Étape 3 – MoodBoard
-(https://www.figma.com/design/EWtrSGv15CLzhyo8qHecmO/Portfolio-inspirations?node-id=0-1&p=f&t=pvfU96qMPHYzhJio-0)  
+https://www.figma.com/design/EWtrSGv15CLzhyo8qHecmO/Portfolio-inspirations?node-id=0-1&p=f&t=pvfU96qMPHYzhJio-0
 
 ---
 
