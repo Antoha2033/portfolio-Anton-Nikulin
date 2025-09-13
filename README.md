@@ -7,7 +7,6 @@ https://www.figma.com/design/EWtrSGv15CLzhyo8qHecmO/Portfolio-inspirations?node-
 
 ## Étape 4 – Tableau Trello
 [J’ai créé un tableau Trello pour organiser les tâches du projet.](https://trello.com/b/I7z7fyIg/portfolio)  
-Il contient trois colonnes : **À faire**, **En cours**, et **Complété**, ce qui me permet de suivre efficacement l’avancement de mon portfolio.
 
 ---
 
