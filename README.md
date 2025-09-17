@@ -3,7 +3,8 @@
 ## Étape 3 – MoodBoard
 https://www.figma.com/design/EWtrSGv15CLzhyo8qHecmO/Portfolio-inspirations?node-id=0-1&p=f&t=pvfU96qMPHYzhJio-0
 
-![Moodboard](Portfolio inspirations.pdf)
+![Moodboard](./Images/80888def-20a1-4527-84dc-3056aa3c690d.png)
+
 ---
 
 ## Étape 4 – Tableau Trello
