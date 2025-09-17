@@ -20,6 +20,13 @@ J’ai choisi une **navigation en carrousel** pour présenter mes projets.
 ## Étape 7 – Composants Vue.js
 J’ai sélectionné trois composants à intégrer dans mon portfolio :  
 
+---
+
+## Étape 8 – DESIGN
+
+[J’ai créé un tableau Trello pour organiser les tâches du projet.]([https://trello.com/b/I7z7fyIg/portfolio](https://www.figma.com/design/htJaGuf2p0hcSKdd4VYRYU/ANTON-NIKULIN---DESIGN?node-id=0-1&t=DluccTXI6l7nYdxu-1))  
+
+
 - **Galerie interactive / Carrousel / Lightbox**  
 
 - **Témoignages en carrousel**  
