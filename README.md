@@ -3,7 +3,7 @@
 ## Étape 3 – MoodBoard
 https://www.figma.com/design/EWtrSGv15CLzhyo8qHecmO/Portfolio-inspirations?node-id=0-1&p=f&t=pvfU96qMPHYzhJio-0
 
-![Moodboard](./Images/ca5c8476-bcd3-4897-9c61-8556e0db9625.png)
+![Moodboard](./Images/Portfolio inspirations.png)
 
 ---
 
