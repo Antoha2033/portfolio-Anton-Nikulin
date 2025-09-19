@@ -21,7 +21,9 @@ J’ai choisi une **navigation en carrousel** pour présenter mes projets.
 J’ai sélectionné trois composants à intégrer dans mon portfolio :  
 
 Galerie interactive / Carrousel / Lightbox
+
 Témoignages en carrousel
+
 Compteur de compétences animées
 ---
 
