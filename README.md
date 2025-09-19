@@ -20,6 +20,9 @@ J’ai choisi une **navigation en carrousel** pour présenter mes projets.
 ## Étape 7 – Composants Vue.js
 J’ai sélectionné trois composants à intégrer dans mon portfolio :  
 
+Galerie interactive / Carrousel / Lightbox
+Témoignages en carrousel
+Compteur de compétences animées
 ---
 
 ## Étape 8 – DESIGN
