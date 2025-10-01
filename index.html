@@ -4,30 +4,68 @@
   <meta charset="UTF-8">
   <title>Accueil - Anton Nikulin</title>
   <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/8.0.2/pixi.min.js"></script>
+
 </head>
 <body>
-  <header>
-    <h1>Anton Nikulin</h1>
-    <nav>
-      <a href="index.html">Accueil</a>
-      <a href="projets_01.html">Projets</a>
-      <a href="#">À propos</a>
-      <a href="#">Contact</a>
-    </nav>
-  </header>
+    <header>
+        <nav class="container-header">
+          <div class="logo">Anton Nikulin</div>
+          <ul>
+            <li><a href="#">Logiciels</a></li>
+            <li><a href="#">Projets</a></li>
+            <li><a href="#">À propos</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+      </header>
+      
 
-  <section class="intro">
-    <img src="images/photo.jpg" alt="Photo d'Anton">
-    <p>
-      Étudiant en Techniques d’intégration multimédia au Cégep Montmorency. 
-      Passionné par la création numérique, combinant programmation, design visuel et narration interactive.
-    </p>
-  </section>
+
+  <main>
+    <section class="hero">
+      <h1>Anton Nikulin :<br>Portfolio</h1>
+    </section>
+
+    <section class="presentation">
+      <div class="textes">
+        <h2>À propos</h2>
+        <p>Je m'appelle <strong>Anton Nikulin</strong>, étudiant en Techniques d'intégration multimédia au Cégep <strong>Montmorency</strong>.</p>
+        <p>
+          Passionné par la création numérique, je combine <span class="color">programmation</span>, 
+          <span class="color">design visuel</span> et <span class="color">narration interactive</span>, tout en intégrant ma passion 
+          pour l’écriture et la <span class="color">conception narrative</span> afin de donner vie à des expériences immersives et créatives.
+        </p>
+        <p>
+          Au cours de mon parcours, j’ai eu l’occasion de réaliser divers projets 
+          allant du développement de jeux vidéo 2D avec <span class="color">Phaser</span> à la 
+          <span class="color">modélisation</span> et animation 3D avec <span class="color">Maya</span>, en passant par la création 
+          de contenus interactifs avec <span class="color">TouchDesigner</span>.
+        </p>
+        <p>
+          Je suis actuellement à la recherche d’une opportunité de <span class="color">stage</span> afin 
+          de mettre mes compétences en pratique et de collaborer sur des projets innovants dans le domaine du 
+          <span class="color">web</span>, du <span class="color">jeu vidéo</span> ou de <span class="color">l’expérience interactive</span>.
+        </p>
+        <p><strong>Mon objectif :</strong> Contribuer à des projets créatifs tout en développant mes compétences techniques et artistiques.</p>
+        <p><a href="#" class="btn-cv">Consultez mon CV↗</a></p>
+      </div>
+
+      <div class="photo">
+        PHOTO
+      </div>
+    </section>
+  </main>
 
   <footer>
     <p>Contacts: <a href="#">Email</a> | <a href="#">Indeed</a> | <a href="#">Instagram</a></p>
   </footer>
 
+  <div id="pixi-container"></div>
+
   <script src="js/script.js"></script>
+  <script src="js/app.js"></script>
+
+
 </body>
 </html>
