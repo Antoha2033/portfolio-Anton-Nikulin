@@ -3,7 +3,9 @@
     src: url('../fonts/Absans-Regular.otf') format('opentype');
   }
   
-
+*{
+  box-sizing: border-box;
+}
   
   #bg-video {
     position: fixed;
@@ -15,8 +17,8 @@
     height: auto;
     z-index: -1;
     object-fit: cover;
-    opacity: 0.9; /* Adjust as needed */
-    pointer-events: none; /* So clicks go through */
+    opacity: 0.9; 
+    pointer-events: none;
 
   }
   
@@ -39,7 +41,7 @@
     text-decoration: underline;
   }
   
-/* Container centré comme Bootstrap */
+
 .container-header {
     max-width: 1200px;
     margin: 0 auto;
@@ -49,13 +51,13 @@
     align-items: center;
   }
   
-  /* Header global */
+ 
   header {
     background-color: #000;
     padding: 20px 0;
   }
   
-  /* Nav elements */
+  
   .logo {
     text-decoration: none;
     color: #fff;
