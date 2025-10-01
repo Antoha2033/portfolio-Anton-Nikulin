@@ -4,21 +4,24 @@
   <meta charset="UTF-8">
   <title>Accueil - Anton Nikulin</title>
   <link rel="stylesheet" href="css/style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/8.0.2/pixi.min.js"></script>
-
 </head>
 <body>
     <header>
         <nav class="container-header">
-          <div class="logo">Anton Nikulin</div>
+            <a class="logo" href="../index.html">Anton Nikulin</a>
           <ul>
             <li><a href="#">Logiciels</a></li>
-            <li><a href="#">Projets</a></li>
+            <li><a href="projects/projet_01.html">Projets</a></li>
             <li><a href="#">À propos</a></li>
             <li><a href="#">Contact</a></li>
           </ul>
         </nav>
       </header>
+
+      <video autoplay muted loop playsinline id="bg-video">
+        <source src="videos/Background.mp4" type="video/mp4" />
+      </video>
+      
       
 
 
@@ -61,10 +64,7 @@
     <p>Contacts: <a href="#">Email</a> | <a href="#">Indeed</a> | <a href="#">Instagram</a></p>
   </footer>
 
-  <div id="pixi-container"></div>
-
   <script src="js/script.js"></script>
-  <script src="js/app.js"></script>
 
 
 </body>
