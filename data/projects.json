@@ -1,0 +1,12 @@
+[
+  {
+    "slug": "arcadia",
+    "title": "Arcadia",
+    "year": 2025,
+    "tags": ["jeu", "Phaser", "arcade"],
+    "excerpt": "Plateformer rétro pour borne arcade personnalisée.",
+    "cover": "images/projets/arcadia/cover.jpg",
+    "gallery": ["images/projets/arcadia/01.jpg","images/projets/arcadia/02.jpg"],
+    "links": { "demo": "#", "code": "#" }
+  }
+]
