@@ -1,169 +1,59 @@
 @font-face {
-    font-family: 'Absans';
-    src: url('../fonts/Absans-Regular.otf') format('opentype');
-  }
-  
-*{
-  box-sizing: border-box;
+  font-family: 'Absans';
+  src: url('../fonts/Absans-Regular.otf') format('opentype');
 }
-  
-  #bg-video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -1;
-    object-fit: cover;
-    opacity: 0.9; 
-    pointer-events: none;
 
-  }
-  
-  
+* { box-sizing: border-box; }
 
-  body {
-    margin: 0;
-    padding: 0;
-    background-color: #000000;
-    color: #ffffff;
-    font-family: 'Absans', sans-serif;
-  }
-  
-  a {
-    color: #e0c167;
-    text-decoration: none;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-  }
-  
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  color: #fff;
+  font-family: 'Absans', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
 
+a { color: #e0c167; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ===== Video background ===== */
+#bg-video {
+  position: fixed;
+  inset: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1;
+  object-fit: cover;
+  opacity: 0.9;                   /* tu as déjà ajusté l’opacité */
+  pointer-events: none;
+  filter: brightness(.75) contrast(1.05);
+}
+
+/* ===== Header ===== */
+header { background-color: #000; padding: 20px 0; }
 .container-header {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
- 
-  header {
-    background-color: #000;
-    padding: 20px 0;
-  }
-  
-  
-  .logo {
-    text-decoration: none;
-    color: #fff;
-    font-size: 1.2rem;
-    font-weight: bold;
-  }
-  
-  
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-    margin: 0;
-    padding: 0;
-  }
-  
-  nav ul li a {
-    color: #ffffff;
-    font-weight: normal;
-  }
-  
-  
-  .hero {
-    text-align: center;
-    padding: 100px 20px 40px;
-  }
-  
-  .hero h1 {
-    font-size: 3.5rem;
-    line-height: 1.2;
-    margin: 0;
-  }
-  
-  .presentation {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 40px 60px;
-    max-width: 1200px;
-    margin: 0 auto;
-    gap: 60px;
-  }
-  
-  .textes {
-    flex: 2;
-    font-size: 1.05rem;
-    line-height: 1.6;
-  }
-  
-  .textes h2 {
-    color: #e0c167;
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-  }
-  
-  .textes .color {
-    color: #e0c167;
-    font-weight: bold;
-  }
-  
-  .btn-cv {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 18px;
-    background-color: #e0c167;
-    color: #000;
-    font-weight: bold;
-    border-radius: 4px;
-  }
-  
-  .photo {
-    flex: 1;
-    background-color: #d2d2d2;
-    width: 250px;
-    height: 250px;
-    border-radius: 20px;
-    color: #222;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-  }
-  
-  footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #111;
-    font-size: 0.9rem;
-    margin-top: 40px;
-  }
-  
+  max-width: 1200px; margin: 0 auto; padding: 0 40px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.logo { color: #fff; font-size: 1.2rem; font-weight: bold; text-decoration: none; }
+nav ul {
+  list-style: none; display: flex; gap: 30px; margin: 0; padding: 0;
+}
+nav ul li a { color: #fff; font-weight: normal; }
 
-/* Intro: full screen, centered */
+/* ===== Intro: full screen, centered ===== */
 .intro {
-  min-height: 100vh;     /* fallback */
-  min-height: 100dvh;    /* mobile toolbars */
+  min-height: 100vh;       /* fallback */
+  min-height: 100dvh;      /* better on mobile toolbars */
   display: grid;
   place-items: center;
   text-align: center;
 }
 
 /* Lift the group slightly above center */
-.intro__stack {
-  transform: translateY(-6vh);
-}
+.intro__stack { transform: translateY(-6vh); }
 
 /* Name */
 .intro__name {
@@ -172,21 +62,19 @@
   font-size: clamp(2.8rem, 9vw, 8rem);
 }
 
-/* Cues directly under the name */
+/* Cues under the name */
 .intro__cues {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;              /* space between the two triangles */
-  margin-top: 8px;       /* distance from the title */
-  pointer-events: none;  /* purely decorative */
+  gap: 6px;               /* space between triangles */
+  margin-top: 8px;        /* space from title */
+  pointer-events: none;   /* decorative only */
 }
 
-/* Triangle size (tweak if you want) */
+/* Triangle size */
 .intro__cues { --cue-size: 34px; }
-@media (min-width: 1200px) {
-  .intro__cues { --cue-size: 40px; }
-}
+@media (min-width: 1200px) { .intro__cues { --cue-size: 40px; } }
 
 /* Triangles (down-pointing) */
 .cue {
@@ -198,18 +86,124 @@
 }
 
 /* Progressive enhancement: only hide/offset when JS will animate */
-.js .intro__name { opacity: 0; transform: translateY(12px); }
-.js .cue        { opacity: 0; transform: translateY(-8px); }
+.has-js .intro__name { opacity: 0; transform: translateY(12px); }
+.has-js .cue        { opacity: 0; transform: translateY(-8px); }
 
-/* Respect reduced motion: no animation, show static */
+/* Reduced motion -> show static */
 @media (prefers-reduced-motion: reduce) {
-  .js .intro__name,
-  .js .cue { opacity: 1 !important; transform: none !important; }
+  .has-js .intro__name,
+  .has-js .cue { opacity: 1 !important; transform: none !important; }
 }
 
-/* Small screens: slightly less lift/tighter spacing */
+/* Small screens tweaks */
 @media (max-width: 600px) {
   .intro__stack { transform: translateY(-3vh); }
   .intro__cues  { margin-top: 6px; gap: 4px; }
 }
 
+/* ===== Presentation / About ===== */
+.presentation {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 60px;
+}
+.textes { flex: 2; font-size: 1.05rem; line-height: 1.6; }
+.textes h2 { color: #e0c167; font-size: 1.8rem; margin-bottom: 20px; }
+.textes .color { color: #e0c167; font-weight: bold; }
+
+.btn-cv {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 18px;
+  background-color: #e0c167;
+  color: #000;
+  font-weight: bold;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,.25);
+}
+.btn-cv:hover { filter: brightness(1.05); }
+
+.photo {
+  flex: 1;
+  background-color: #d2d2d2;
+  width: 250px;
+  height: 250px;
+  border-radius: 20px;
+  color: #222;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+/* ===== Footer ===== */
+footer {
+  text-align: center; padding: 20px; background-color: #111;
+  font-size: 0.9rem; margin-top: 40px;
+}
+
+/* ===== Projects / Carousel (fluid hover) ===== */
+.projects {
+  max-width: 1200px; margin: 0 auto; padding: 64px 24px;
+}
+.projects__inner h2 {
+  font-size: clamp(1.6rem, 3vw, 2rem); margin: 0 0 16px; color: #e6e6e6;
+}
+
+/* Region focus for keyboard users */
+.carousel { outline: none; }
+.carousel:focus-visible { outline: 2px solid #e0c167; outline-offset: 6px; border-radius: 12px; }
+
+/* We show 4 items at once. Flexbox distributes width.
+   On hover/focus, the active card gets a bigger flex-grow. */
+.carousel__row {
+  display: flex;
+  gap: 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.02);
+  padding: 12px;
+}
+
+/* Card base size: flex-basis:0 lets flex-grow control width */
+.card {
+  position: relative;
+  display: block;
+  min-height: 320px;
+  flex: 1 1 0;                 /* flex-grow:1; flex-shrink:1; flex-basis:0 */
+  transition: flex-grow .35s ease, opacity .35s ease, filter .35s ease;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+/* Image and caption */
+.card__img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(.2) brightness(.85); }
+.card__caption {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 10px 12px; font-size: .95rem; color: #ddd;
+  background: linear-gradient(to top, rgba(0,0,0,.45), rgba(0,0,0,0));
+}
+
+/* Dimming others by default a bit */
+.card { opacity: .65; }
+.card.is-active { opacity: 1; flex-grow: 3; }  /* Active card expands and brightens */
+.card.is-active .card__img { filter: none; }
+
+/* Keyboard focus style on each link */
+.card__link { display:block; height:100%; }
+.card__link:focus-visible { outline: 2px solid #e0c167; outline-offset: -4px; border-radius: 10px; }
+
+/* Dots are not needed in this mode; hide them if you kept them */
+.carousel__dots, .carousel__btn { display: none !important; }
+
+/* Responsive: stack to 2-up on small screens, still expandable */
+@media (max-width: 900px) {
+  .carousel__row { flex-wrap: wrap; }
+  .card { flex: 1 1 calc(50% - 14px); min-height: 240px; }
+  .card.is-active { flex-basis: calc(100% - 14px); }
+}

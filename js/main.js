@@ -1,5 +1,5 @@
-// Add .js class once JS is running (progressive enhancement)
-document.documentElement.classList.add('js');
+// Progressive enhancement flag
+document.documentElement.classList.add('has-js');
 
 const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -7,14 +7,14 @@ window.addEventListener('DOMContentLoaded', () => {
   const nameEl = document.querySelector('[data-anim="name"]');
   const cues   = document.querySelectorAll('.cue');
 
-  // No GSAP or reduced motion → show static
+  // Fallback: show static
   if (reduce || typeof gsap === 'undefined') {
-    nameEl && (nameEl.style.opacity = 1, nameEl.style.transform = 'none');
-    cues.forEach(c => (c.style.opacity = 1, c.style.transform = 'none'));
+    if (nameEl) { nameEl.style.opacity = 1; nameEl.style.transform = 'none'; }
+    cues.forEach(c => { c.style.opacity = 1; c.style.transform = 'none'; });
     return;
   }
 
-  // Timeline: name in → cues in (stagger) → gentle bob forever
+  // Sequence: name in → cues in (stagger) → continuous bob
   const tl = gsap.timeline({ defaults: { ease: 'power2.out' } });
 
   tl.fromTo(nameEl, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.9 });

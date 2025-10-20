@@ -1,12 +1,22 @@
 [
-  {
-    "slug": "arcadia",
-    "title": "Arcadia",
-    "year": 2025,
-    "tags": ["jeu", "Phaser", "arcade"],
-    "excerpt": "Plateformer rétro pour borne arcade personnalisée.",
+  { "slug": "arcadia",   "title": "Arcadia",            "year": 2025,
+    "tags": ["Phaser","Jeu 2D"], "excerpt": "Prototype de borne arcade.",
     "cover": "images/projets/arcadia/cover.jpg",
-    "gallery": ["images/projets/arcadia/01.jpg","images/projets/arcadia/02.jpg"],
-    "links": { "demo": "#", "code": "#" }
+    "gallery": ["images/projets/arcadia/box1.jpg","images/projets/arcadia/grotte_slime.png"]
+  },
+  { "slug": "frostpunk", "title": "Frostland Reborn",   "year": 2025,
+    "tags": ["Modding","Unreal"], "excerpt": "Conception narrative et gameplay.",
+    "cover": "images/projets/frostpunk/cover.jpg",
+    "gallery": ["images/projets/frostpunk/20250830_1.jpg"]
+  },
+  { "slug": "kyvos",     "title": "Kyvos",              "year": 2025,
+    "tags": ["Prototype"], "excerpt": "Itérations gameplay et level design.",
+    "cover": "images/projets/kyvos/cover.jpg",
+    "gallery": ["images/projets/kyvos/kyvos1.jpg"]
+  },
+  { "slug": "red",       "title": "Red Dead Reload",    "year": 2025,
+    "tags": ["Programmation"], "excerpt": "Mini-jeu inspiré western.",
+    "cover": "images/projets/red/cover.jpg",
+    "gallery": ["images/projets/red/redded_gameplay1.png"]
   }
 ]
