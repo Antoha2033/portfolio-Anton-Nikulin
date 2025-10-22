@@ -182,7 +182,7 @@ footer {
 }
 
 /* Image and caption */
-.card__img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(.2) brightness(.85); }
+.card__img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(.2) brightness(.65) contrast(1.05); transition: filter .28s ease; }
 .card__caption {
   position: absolute; left: 0; right: 0; bottom: 0;
   padding: 10px 12px; font-size: .95rem; color: #ddd;
@@ -190,8 +190,7 @@ footer {
 }
 
 /* Dimming others by default a bit */
-.card { opacity: .65; }
-.card.is-active { opacity: 1; flex-grow: 3; }  /* Active card expands and brightens */
+.card.is-active { flex-grow: 1.4; }  /* Active card expands and brightens */
 .card.is-active .card__img { filter: none; }
 
 /* Keyboard focus style on each link */
@@ -207,3 +206,4 @@ footer {
   .card { flex: 1 1 calc(50% - 14px); min-height: 240px; }
   .card.is-active { flex-basis: calc(100% - 14px); }
 }
+
