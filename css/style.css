@@ -182,7 +182,7 @@ footer {
 }
 
 /* Image and caption */
-.card__img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(.2) brightness(.65) contrast(1.05); transition: filter .28s ease; }
+.card__img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(0.8) brightness(.85) contrast(1.05); transition: filter .28s ease; }
 .card__caption {
   position: absolute; left: 0; right: 0; bottom: 0;
   padding: 10px 12px; font-size: .95rem; color: #ddd;
