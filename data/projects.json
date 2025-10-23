@@ -15,7 +15,7 @@
     "gallery": ["images/projets/kyvos/kyvos1.jpg"]
   },
   { "slug": "red",       "title": "Red Dead Reload",    "year": 2025,
-    "tags": ["Programmation"], "excerpt": "Mini-jeu inspiré western.",
+    "tags": ["Web"], "excerpt": "Mini-jeu inspiré western.",
     "cover": "images/projets/red/cover.jpg",
     "gallery": ["images/projets/red/redded_gameplay1.png"]
   }
