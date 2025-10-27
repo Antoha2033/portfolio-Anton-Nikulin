@@ -12,7 +12,7 @@
       "images/projets/arcadia/grotte_slime.png",
       "images/projets/arcadia/cover.jpg"
     ],
-    "text1": "Présentation du projet Arcadia et objectifs.",
+    "text1": "AAA",
     "text2": "Mon rôle : conception gameplay et intégration.",
     "text3": "Résultats et leçons apprises."
   },
@@ -29,7 +29,7 @@
       "images/projets/frostpunk/Image (1).jpg",
       "images/projets/frostpunk/royaume_championpng.png"
     ],
-    "text1": "Qu’est-ce que le projet ?",
+    "text1": "BBB",
     "text2": "Mon rôle sur le mod et les outils utilisés.",
     "text3": "Pourquoi ce projet et son impact."
   },
@@ -46,7 +46,7 @@
       "images/projets/kyvos/kyvos3.jpg",
       "images/projets/kyvos/kyvos5.jpg"
     ],
-    "text1": "Intentions de design initiales.",
+    "text1": "CCC",
     "text2": "Boucles de gameplay et tests.",
     "text3": "Conclusion & prochaines étapes."
   },
@@ -63,7 +63,7 @@
       "images/projets/red/cover.jpg",
       "images/projets/red/Capture d’écran 2025-10-22 120729.png"
     ],
-    "text1": "Pitch et contraintes techniques.",
+    "text1": "VVV",
     "text2": "Système de tir et UI.",
     "text3": "Retours utilisateurs."
   },
@@ -80,7 +80,7 @@
       "images/projets/3d/Rendus_07.png",
       "images/projets/3d/Rendus_09.jpg"
     ],
-    "text1": "Brief et références.",
+    "text1": "DDD",
     "text2": "Pipeline : blockout → sculpt → bake → texture.",
     "text3": "Rendu final et lighting."
   }

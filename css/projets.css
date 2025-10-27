@@ -277,3 +277,9 @@ CONTACT / FOOTER SECTION
 
 
 
+/* animation helpers */
+.reveal-left,
+.reveal-right {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}

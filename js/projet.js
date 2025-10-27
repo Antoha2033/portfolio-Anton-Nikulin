@@ -41,5 +41,8 @@ createApp({
       this.loading = false;
       window.scrollTo({ top: 0, behavior: 'instant' });
     }
+    
   }
 }).mount('#project-app');
+
+
