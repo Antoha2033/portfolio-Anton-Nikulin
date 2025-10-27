@@ -165,7 +165,7 @@ main{ padding-top: calc(var(--header-h) + 12px); }
 @media (min-width:1200px){ .intro__cues{ --cue-size:40px;} }
 .cue{ width:0; height:0; border-left:calc(var(--cue-size)*.5) solid transparent; border-right:calc(var(--cue-size)*.5) solid transparent; border-top:var(--cue-size) solid #e6e6e6; }
 .has-js .intro__name{ opacity:0; transform:translateY(12px); }
-.has-js .cue{ opacity:0; transform:translateY(-8px);  }
+.has-js .cue{ opacity:0; transform:translateY(-8px); }
 @media (prefers-reduced-motion: reduce){ .has-js .intro__name, .has-js .cue{ opacity:1 !important; transform:none !important; } }
 @media (max-width:600px){ .intro__stack{ transform: translateY(-3vh); } .intro__cues{ margin-top:6px; gap:4px; } }
 

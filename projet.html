@@ -4,26 +4,56 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Projet — Chargement…</title>
-  <link rel="stylesheet" href="css/projets.css" />
+
+  <!-- 1) Global/site styles (header, palette, background video, etc.) -->
+  <link rel="stylesheet" href="style.css">
+  <!-- 2) Project page styles (layout + safe overrides) -->
+  <link rel="stylesheet" href="css/projets.css">
+
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
 </head>
-
-<link rel="stylesheet" href="css/projets.css">
-
 <body class="project-page">
-  <header class="p-header">
-    <a class="p-back" href="index.html">← Retour</a>
-    <h1 id="page-title" class="p-title">Projet</h1>
+
+  <!-- Background video uses the SAME id/classes your homepage styles expect -->
+  <video id="bg-video" autoplay muted loop playsinline preload="auto"
+         poster="images/background.jpg" aria-hidden="true">
+    <source src="videos/Composition.mp4" type="video/mp4">
+  </video>
+
+  <!-- Header: EXACT same structure/classes as the homepage -->
+  <header>
+    <div class="header__bar">
+      <a class="logo" href="index.html">Anton Nikulin</a>
+      <nav class="nav">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="index.html#about">À propos</a></li>
+          <li><a class="nav__link" href="index.html#skills">Pertinences</a></li>
+          <li><a class="nav__link" href="index.html#projects">Projets</a></li>
+          <li><a class="nav__link" href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <main id="project-app" class="p-container">
-    <div v-if="loading" class="p-loading">Chargement…</div>
-    <div v-else-if="error" class="p-error" role="alert">{{ error }}</div>
+  <!-- Vue app -->
+  <main id="project-app" class="wrap">
+    <div v-if="loading" class="notice notice--muted">Chargement…</div>
+    <div v-else-if="error" class="notice notice--danger" role="alert">{{ error }}</div>
     <project-detail v-else :project="project"></project-detail>
   </main>
 
-  <!-- Vue 3 (global build) FIRST -->
+  <footer class="p-footer wrap">
+    <small>© <span id="year"></span> Anton Nikulin — Portfolio</small>
+  </footer>
+
+  <!-- Vue 3 (global build) THEN your logic -->
   <script defer src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
-  <!-- Your logic -->
   <script defer src="js/projet.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const y = document.getElementById('year');
+      if (y) y.textContent = new Date().getFullYear();
+    });
+  </script>
 </body>
 </html>
