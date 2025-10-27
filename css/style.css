@@ -383,3 +383,28 @@ CONTACT / FOOTER SECTION
 }
 
 
+/* Center the whole article like sections on the home page */
+.project {
+  max-width: 1100px;   /* same spirit as your site’s inner widths */
+  margin-inline: auto;
+}
+
+/* Keep the hero image centered and not too wide */
+.project__cover {
+  width: 100%;
+  max-width: 1200px;   /* prevents 'full-bleed' look */
+  height: auto;
+  display: block;
+  margin-inline: auto; /* centers the img inside the hero */
+  border-radius: 14px;
+}
+
+/* Optional: give the gallery the same column width */
+.project__gallery,
+.project__header,
+.project__links,
+.project__tech,
+.project__content .project__rich {
+  max-width: 800px;
+  margin-inline: auto;
+}

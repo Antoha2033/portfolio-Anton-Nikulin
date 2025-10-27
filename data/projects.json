@@ -1,27 +1,87 @@
 [
-  { "id": 1, "slug": "arcadia",   "title": "Arcadia",            "year": 2025,
-    "tags": ["Phaser","Jeu 2D"], "excerpt": "Prototype de borne arcade.",
+  {
+    "id": 1,
+    "slug": "arcadia",
+    "title": "Arcadia",
+    "year": 2025,
+    "tags": ["Phaser", "Jeu 2D", "arcade"],
+    "excerpt": "Prototype de borne arcade.",
     "cover": "images/projets/arcadia/cover.jpg",
-    "gallery": ["images/projets/arcadia/box1.jpg","images/projets/arcadia/grotte_slime.png"]
+    "gallery": [
+      "images/projets/arcadia/box1.jpg",
+      "images/projets/arcadia/grotte_slime.png",
+      "images/projets/arcadia/cover.jpg"
+    ],
+    "text1": "Présentation du projet Arcadia et objectifs.",
+    "text2": "Mon rôle : conception gameplay et intégration.",
+    "text3": "Résultats et leçons apprises."
   },
-  { "id": 2, "slug": "frostpunk", "title": "Frostland Reborn",   "year": 2025,
-    "tags": ["Modding","Unreal"], "excerpt": "Conception narrative et gameplay.",
+  {
+    "id": 2,
+    "slug": "frostpunk",
+    "title": "Frostland Reborn",
+    "year": 2025,
+    "tags": ["Modding", "Unreal"],
+    "excerpt": "Conception narrative et gameplay.",
     "cover": "images/projets/frostpunk/cover.jpg",
-    "gallery": ["images/projets/frostpunk/20250830_1.jpg"]
+    "gallery": [
+      "images/projets/frostpunk/20250830_1.jpg",
+      "images/projets/frostpunk/Image (1).jpg",
+      "images/projets/frostpunk/royaume_championpng.png"
+    ],
+    "text1": "Qu’est-ce que le projet ?",
+    "text2": "Mon rôle sur le mod et les outils utilisés.",
+    "text3": "Pourquoi ce projet et son impact."
   },
-  { "id": 3, "slug": "kyvos",     "title": "Kyvos",              "year": 2025,
-    "tags": ["Prototype"], "excerpt": "Itérations gameplay et level design.",
+  {
+    "id": 3,
+    "slug": "kyvos",
+    "title": "Kyvos",
+    "year": 2023,
+    "tags": ["Prototype"],
+    "excerpt": "Itérations gameplay et level design.",
     "cover": "images/projets/kyvos/cover.jpg",
-    "gallery": ["images/projets/kyvos/kyvos1.jpg"]
+    "gallery": [
+      "images/projets/kyvos/kyvos2.png",
+      "images/projets/kyvos/kyvos3.jpg",
+      "images/projets/kyvos/kyvos5.jpg"
+    ],
+    "text1": "Intentions de design initiales.",
+    "text2": "Boucles de gameplay et tests.",
+    "text3": "Conclusion & prochaines étapes."
   },
-  { "id": 4, "slug": "red",       "title": "Red Dead Reload",    "year": 2025,
-    "tags": ["Web"], "excerpt": "Mini-jeu inspiré western.",
+  {
+    "id": 4,
+    "slug": "red",
+    "title": "Red Dead Reload",
+    "year": 2024,
+    "tags": ["Web", "Jeu"],
+    "excerpt": "Mini-jeu inspiré western.",
     "cover": "images/projets/red/cover.jpg",
-    "gallery": ["images/projets/red/redded_gameplay1.png"]
+    "gallery": [
+      "images/projets/red/Capture d’écran 2025-10-22 120752.png",
+      "images/projets/red/cover.jpg",
+      "images/projets/red/Capture d’écran 2025-10-22 120729.png"
+    ],
+    "text1": "Pitch et contraintes techniques.",
+    "text2": "Système de tir et UI.",
+    "text3": "Retours utilisateurs."
   },
-  { "id": 5, "slug": "3D",       "title": "Modélisation 3D",    "year": 2025,
-    "tags": ["Perssonage"], "excerpt": "Modélisation 3D",
+  {
+    "id": 5,
+    "slug": "3d",
+    "title": "Modélisation 3D",
+    "year": 2022,
+    "tags": ["Personnage"],
+    "excerpt": "Modélisation 3D.",
     "cover": "images/projets/3d/cover.png",
-    "gallery": ["images/projets/3d/Rendus_01.png"]
+    "gallery": [
+      "images/projets/3d/Rendus_01.png",
+      "images/projets/3d/Rendus_07.png",
+      "images/projets/3d/Rendus_09.jpg"
+    ],
+    "text1": "Brief et références.",
+    "text2": "Pipeline : blockout → sculpt → bake → texture.",
+    "text3": "Rendu final et lighting."
   }
 ]

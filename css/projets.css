@@ -1,204 +1,279 @@
-/* css/projets.css */
+/* =========================
+   GLOBAL SETTINGS
+========================= */
 
-/* -----------------------------------------------------------
-   Design tokens (roughly aligned to your main style)
------------------------------------------------------------ */
-:root {
-  --bg: #0b0b0c;
-  --bg-soft: #121214;
-  --surface: #1a1b1e;
-  --text: #e9e9ec;
-  --text-dim: #b8b9c0;
-  --muted: #8a8c95;
-  --accent: #f7c948;      /* gold accent */
-  --accent-2: #ffd56a;
-  --danger: #ff6b6b;
-
-  --radius: 16px;
-  --radius-sm: 10px;
-  --shadow: 0 10px 30px rgba(0,0,0,.35);
-
-  --wrap: min(1100px, 92vw);
-  --gap: 24px;
-
-  --h1: clamp(1.75rem, 2.8vw, 3rem);
-  --h2: clamp(1.35rem, 2.2vw, 2.2rem);
-  --h3: clamp(1.1rem, 1.6vw, 1.4rem);
-  --lead: clamp(1rem, 1.4vw, 1.125rem);
+/* Font faces */
+@font-face{
+  font-family: "Absans";
+  src: url("../fonts/Absans-Regular.otf") format("opentype");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face{
+  font-family: "Absans";
+  src: url("../fonts/Absans-Bold.otf") format("opentype");
+  font-weight: 700; font-style: normal; font-display: swap;
 }
 
-/* -----------------------------------------------------------
-   Base
------------------------------------------------------------ */
-* { box-sizing: border-box; }
-html, body { height: 100%; }
-body {
-  margin: 0;
-  background: var(--bg) url("../images/noise.png") center/cover fixed;
-  color: var(--text);
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
-  line-height: 1.6;
+:root{
+  --page-max: 1900px;
+  --page-gutter: clamp(24px, 5vw, 64px);
+  --section-space: clamp(60px, 16vh, 120px);
+
+  --accent: #e0c167;
+  --text: #fff;
+  --bg: #000;
+
+  /* Pertinaces scale */
+  --container-max: 1100px;
+  --gap: clamp(1rem, 2.5vw, 2rem);
+  --title-size: clamp(1.6rem, 2.2vw, 2.2rem);
+  --label-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  --text-size: clamp(1.15rem, 1.2vw, 1.05rem);
+  --fg: hsl(0 0% 98%);
+  --fg-dim: hsl(0 0% 82%);
+  --fg-strong: hsl(0 0% 100%);
+  --panel-bg: hsl(0 0% 100% / 0.06);
+  --panel-stroke: hsl(0 0% 100% / 0.15);
+  --panel-shadow: 0 8px 30px hsl(0 0% 0% / 0.25);
+  
 }
 
-.wrap { width: var(--wrap); margin-inline: auto; padding-inline: 4px; }
 
-a { color: var(--accent-2); text-decoration: none; }
-a:hover { text-decoration: underline; }
+/* Base */
+*{ box-sizing: border-box; }
+html, body{ margin:0; padding:0; color:var(--text); background:var(--bg); }
+body{ font-family:"Absans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+h1,h2,h3,strong,.strong{ font-weight:700; }
+a{ color:var(--accent); text-decoration:none; }
 
-/* Buttons / notices */
-.btn {
-  display: inline-flex; align-items: center; gap: .5rem;
-  padding: .55rem 1rem; border-radius: 999px;
-  border: 1px solid var(--accent);
-  background: transparent; color: var(--accent);
-  text-decoration: none; font-weight: 600;
-}
-.btn:hover { background: rgba(247,201,72,.12); text-decoration: none; }
-.btn--ghost { border-color: var(--text-dim); color: var(--text-dim); }
-.btn--ghost:hover { background: rgba(255,255,255,.06); }
+html { scroll-behavior: smooth; }                  /* smooth scroll for in-page anchors */
+section[id] { scroll-margin-top: var(--header-h); }/* offset for fixed header */
 
-.notice {
-  padding: .9rem 1rem;
-  border-radius: var(--radius-sm);
-  background: var(--surface);
-  color: var(--text);
-  border: 1px solid rgba(255,255,255,.06);
-}
-.notice--muted { color: var(--muted); }
-.notice--danger { background: #2a1414; border-color: rgba(255,0,0,.25); color: var(--danger); }
 
+/* Shared wrappers */
+.wrap{ max-width:var(--page-max); margin-inline:auto; padding-inline:var(--page-gutter); }
+.section{ padding-block: var(--section-space); }
 
 /* =========================
    BACKGROUND VIDEO
 ========================= */
 #bg-video{
   position:fixed; inset:0; width:100vw; height:100vh; object-fit:cover;
-  opacity:.6; z-index:0; pointer-events:none;
+  opacity:.7; z-index:0; pointer-events:none;
 }
 body > *:not(#bg-video):not(#bg-overlay):not(header){ position:relative; z-index:1;  }
 
-/* ===== Guardrails to stop homepage header styles leaking into project media ===== */
+/* =========================
+   HEADER
+========================= */
 
-/* 1) If style.css has generic `img { ... }`, keep project media sane inside main content */
-.project-page main :where(img, video) {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  position: static;
-  object-fit: cover;          /* contain or cover inside card/grid */
-  object-position: center;    /* center media crop */
-}
+:root{ --header-h: clamp(58px, 6vw, 84px); } /* header height dial */
 
-/* 2) Scope any header-specific image rules to the header only (non-increasing specificity) */
-.site-header :where(img) { max-width: none; height: auto; }
+header{
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--header-h);
+  z-index: 1000;
 
-/* 3) If your header is fixed/sticky, set stacking context and avoid overlap issues */
-.site-header {
-  position: sticky; top: 0; z-index: 10;   /* or `position: fixed` if that’s what your home uses */
+  /* keep text readable over the background */
+  background: rgba(0,0,0,.15);
   backdrop-filter: blur(6px);
-  background: linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,0));
+  -webkit-backdrop-filter: blur(6px);
 }
 
+main{ padding-top: calc(var(--header-h) + 12px); }
 
-/* -----------------------------------------------------------
-   Project layout
------------------------------------------------------------ */
-.project > section { margin-block: 1.5rem; }
 
-.project__hero {
-  background: radial-gradient(120% 60% at 50% 0%, rgba(247,201,72,.08), transparent 50%),
-              linear-gradient(180deg, rgba(255,255,255,.02), transparent 40%);
-  padding: .5rem;
-  border-radius: var(--radius);
-}
-.project__cover {
-  display: block; width: 100%; height: auto;
-  border-radius: calc(var(--radius) - .5rem);
-  box-shadow: var(--shadow);
+.header__bar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;     /* keep left/right layout; change to 'center' if you want everything centered in a row */
+  height: 100%;
+  max-width: 1000px;          /* centers the header content */
+  margin-inline: auto;
+  padding-inline: var(--page-gutter);
 }
 
-.project__header { margin-top: 1rem; }
-.project__title  { font-size: var(--h2); margin: 0; }
-.project__meta   { margin: .25rem 0 0; color: var(--text-dim); font-size: .98rem; }
-.project__summary{ font-size: var(--lead); color: var(--text); margin-top: .6rem; }
+.logo{ color:#fff; font-weight:700; font-size:25px; }
+.nav__list{ display:flex; gap:30px; list-style:none; margin:0; padding:0; font-size: 20px; }
+.nav__list a{ color:#fff; }
 
-/* Rich HTML body from JSON */
-.project__rich {
-  display: grid; gap: .9rem;
-  color: var(--text);
-}
-.project__rich p { margin: 0; }
-.project__rich h3 { font-size: var(--h3); margin: 1rem 0 .25rem; color: var(--accent-2); }
-.project__rich a { color: var(--accent-2); }
-
-/* Tech tags */
-.tags { display: flex; flex-wrap: wrap; gap: .5rem; padding: 0; margin: .6rem 0 0; list-style: none; }
-.tags__item {
-  border: 1px solid rgba(255,255,255,.15);
-  padding: .25rem .6rem;
-  border-radius: 999px;
-  color: var(--text-dim);
-  background: rgba(255,255,255,.04);
-  font-size: .92rem;
-}
-
-/* Links list */
-.links { list-style: none; padding: 0; margin: .6rem 0 0; display: grid; gap: .35rem; }
-.links__item a {
-  display: inline-flex; align-items: center; gap: .5rem;
-  padding: .5rem .8rem;
-  border-radius: 999px;
-  color: var(--accent);
-  background: rgba(247,201,72,.07);
-  border: 1px solid rgba(247,201,72,.35);
+/* === Nav link hover + active underline === */
+.nav__link{
+  position: relative;
+  display: inline-block;
+  padding: .35rem .2rem;
   text-decoration: none;
+  color: var(--fg, #fff);
+  transition: color .25s ease;
 }
-.links__item a:hover { background: rgba(247,201,72,.13); }
 
-/* -----------------------------------------------------------
-   Gallery
------------------------------------------------------------ */
-.section__title { font-size: var(--h3); margin: 0 0 .5rem; color: var(--accent-2); }
+.nav__link::after{
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  bottom: 0;                 /* underline hugs the text baseline */
+  height: 2px;               /* tweak thickness */
+  background: var(--accent); /* your gold/yellow */
+  transform: scaleX(0);
+  transform-origin: 50% 50%;
+  transition: transform .28s ease-in-out;
+}
 
-.gallery {
+/* On hover OR when the link is active (current section) */
+.nav__link:hover,
+.nav__link.is-active{
+  color: var(--accent);
+}
+.nav__link:hover::after,
+.nav__link.is-active::after{
+  transform: scaleX(1);
+}
+
+/* Motion-friendly fallback */
+@media (prefers-reduced-motion: reduce){
+  .nav__link::after{ transition: none; }
+  .nav__link{ transition: none; }
+}
+
+
+
+/* ========= Case-study slices ========= */
+
+/* Wrapper that keeps text in your normal content width */
+.project-casestudy {
+  max-width: 1600px;                 /* match your site’s content width */
+  margin-inline: auto;
+  padding-inline: clamp(16px, 3vw, 32px);
+}
+
+/* One slice = one image + its text */
+.project-slice {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: .9rem;
+  align-items: center;
+  gap: clamp(24px, 4vw, 48px);
+  margin-block: clamp(32px, 6vw, 96px);
 }
-.gallery__item {
-  background: var(--surface);
+
+/* Left image, right text */
+.project-slice.left {
+  grid-template-columns: minmax(0, 700px) 1fr;
+}
+
+/* Right image, left text */
+.project-slice.right {
+  grid-template-columns: 1fr minmax(0, 700px);
+}
+
+/* Make right-side text (slices 1 & 3) hug the right viewport edge */
+.project-slice.left .copy {
+  justify-self: end;                               /* push to the right in the grid */
+  margin-right: max(calc(50% - 50vw), 0px);        /* bleed to the edge */
+  padding-right: clamp(12px, 3vw, 32px);           /* safe gutter from edge */
+  max-width: 600px;                                 /* readable line length */
+}
+
+/* keep left-side text (slice 2) hugging the left edge, if not already */
+.project-slice.right .copy {
+  justify-self: start;
+  margin-left: max(calc(50% - 50vw), 0px);         /* bleed to the left edge */
+  padding-left: clamp(12px, 3vw, 32px);
+  max-width: 600px;
+}
+
+/* Copy width for comfortable reading */
+.project-slice .copy {
+  max-width: 600px;
+}
+
+/* Images: responsive, capped at ~700px */
+.project-slice .media img {
+  display: block;
+  width: min(700px, 46vw);
+  height: auto;
+  border-radius: 12px;                /* optional */
+}
+
+/* --- Pin images to the screen edges (bleed) --- */
+.project-slice.left  .media { justify-self: start; margin-left:  max(calc(50% - 50vw), 0px); }
+.project-slice.right .media { justify-self: end;   margin-right: max(calc(50% - 50vw), 0px); }
+
+/* Mobile: stack, centered */
+@media (max-width: 900px) {
+  .project-slice,
+  .project-slice.left,
+  .project-slice.right {
+    grid-template-columns: 1fr;
+  }
+  .project-slice .media { margin: 0; justify-self: center; }
+  .project-slice .copy  { justify-self: center; text-align: left; }
+}
+
+
+
+
+
+/* =============== 
+CONTACT / FOOTER SECTION 
+=============== */
+
+
+
+#contact.contact{
+  /* make it taller like the example */
+  --section-space: clamp(4rem, 14vh, 18rem);
+
+  text-align: center;
+    inset: var(--panel-pad);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   border: 1px solid rgba(255,255,255,.06);
-  border-radius: var(--radius-sm);
-  overflow: hidden;
-  padding: .5rem;
-  display: grid; gap: .5rem;
-  transition: transform .2s ease, box-shadow .2s ease;
-}
-.gallery__item:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
-
-.gallery__item img,
-.gallery__item video {
-  width: 100%; height: auto; display: block;
-  border-radius: 10px;
-  background: #000;
-  aspect-ratio: 16/9;        /* keeps a clean grid even with mixed sizes */
-  object-fit: cover;
-}
-.gallery__video { outline: none; }
-
-.gallery__item figcaption {
-  color: var(--muted);
-  font-size: .92rem;
+  z-index: -1;
 }
 
-/* -----------------------------------------------------------
-   Responsive tweaks
------------------------------------------------------------ */
-@media (max-width: 640px) {
-  .p-header { padding-block: .9rem .2rem; }
-  .project__hero { padding: .35rem; }
-  .gallery { grid-template-columns: 1fr 1fr; }
+
+
+
+#contact .wrap{
+  max-width: 900px;
+  margin-inline: auto;
 }
-@media (max-width: 420px) {
-  .gallery { grid-template-columns: 1fr; }
+
+/* links row */
+.contact__links{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(12px, 2vw, 20px);
+  padding: 0;
+  margin: clamp(18px, 3vh, 28px) 0 0;
+  list-style: none;
 }
+
+/* pill buttons */
+.contact__btn{
+  display: inline-block;
+  font-size: clamp(1rem, 1.2vw, 1.15rem);   /* bigger text */
+  line-height: 1;
+  padding: .9rem 1.3rem;
+  border: 2px solid var(--accent);
+  border-radius: 9999px;
+  color: var(--fg);
+  text-decoration: none;
+  transition: background-color .25s ease, color .25s ease, transform .15s ease;
+  color:var(--accent);
+}
+
+.contact__btn:hover{
+  background-color: var(--accent);
+  color: var(--bg, #000);
+}
+
+.contact__note{
+  margin-top: clamp(14px, 2vh, 22px);
+  color: var(--fg-dim);
+  font-size: clamp(.95rem, 1vw, 1.05rem);
+}
+
+
+
