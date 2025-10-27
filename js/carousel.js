@@ -7,11 +7,15 @@
       props: { items: { type: Array, required: true } },
       setup(props) {
         const active = ref(-1); // -1 = none (all equal)
+
+        
   
         // accessibility: expand on keyboard focus and arrow keys
         const region = ref(null);
         const setActive = (i) => { active.value = i; };
         const clearActive = () => { active.value = -1; };
+
+        
   
         const onKey = (e) => {
           if (!props.items?.length) return;
@@ -38,35 +42,43 @@
   
         return { active, region, setActive, clearActive };
       },
-      template: `
-        <section
-          ref="region"
-          class="carousel"
-          role="region"
-          aria-roledescription="carousel"
-          aria-label="Projets (survolez ou utilisez les flèches pour agrandir un projet)"
-          tabindex="0"
-          @mouseleave="clearActive"
+template: `
+  <section
+    ref="region"
+    class="carousel"
+    role="region"
+    aria-roledescription="carousel"
+    aria-label="Projets (survolez ou utilisez les flèches pour agrandir un projet)"
+    tabindex="0"
+    @mouseleave="clearActive"
+  >
+    <div class="carousel__row">
+      <article
+        v-for="(p,i) in items"
+        :key="p.slug || p.id || i"
+        class="card"
+        :class="{ 'is-active': i === active }"
+        @mouseenter="setActive(i)"
+        @focusin="setActive(i)"
+      >
+        <!-- IMPORTANT: bind with :href so Vue evaluates the expression -->
+        <a
+          class="card__link"
+          :href="\`projet.html?proj-id=\${encodeURIComponent(p.id)}\`"
+          :data-idx="i"
+          :aria-label="\`Voir le projet \${p.title}\`"
         >
-          <div class="carousel__row">
-            <article
-              v-for="(p,i) in items"
-              :key="p.slug"
-              class="card"
-              :class="{ 'is-active': i === active }"
-              @mouseenter="setActive(i)"
-            >
-              <a class="card__link" :href="'projet/' + p.slug + '.html'" :data-idx="i">
-                <img class="card__img" :src="p.cover" :alt="p.title" />
-                <div class="card__caption">
-                  <strong>{{ p.title }}</strong>
-                  <span v-if="p.tags?.length"> · {{ p.tags[0] }}</span>
-                </div>
-              </a>
-            </article>
+          <img class="card__img" :src="p.cover" :alt="p.title" loading="lazy" />
+          <div class="card__caption">
+            <strong>{{ p.title }}</strong>
+            <span v-if="p.tags?.length"> · {{ p.tags[0] }}</span>
           </div>
-        </section>
-      `
+        </a>
+      </article>
+    </div>
+  </section>
+`
+
     });
   
     // Fetch projects.json and mount

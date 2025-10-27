@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Projet — Chargement…</title>
+  <link rel="stylesheet" href="css/projets.css" />
+</head>
+
+<link rel="stylesheet" href="css/projets.css">
+
+<body class="project-page">
+  <header class="p-header">
+    <a class="p-back" href="index.html">← Retour</a>
+    <h1 id="page-title" class="p-title">Projet</h1>
+  </header>
+
+  <main id="project-app" class="p-container">
+    <div v-if="loading" class="p-loading">Chargement…</div>
+    <div v-else-if="error" class="p-error" role="alert">{{ error }}</div>
+    <project-detail v-else :project="project"></project-detail>
+  </main>
+
+  <!-- Vue 3 (global build) FIRST -->
+  <script defer src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <!-- Your logic -->
+  <script defer src="js/projet.js"></script>
+</body>
+</html>

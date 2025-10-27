@@ -1,25 +1,25 @@
 [
-  { "slug": "arcadia",   "title": "Arcadia",            "year": 2025,
+  { "id": 1, "slug": "arcadia",   "title": "Arcadia",            "year": 2025,
     "tags": ["Phaser","Jeu 2D"], "excerpt": "Prototype de borne arcade.",
     "cover": "images/projets/arcadia/cover.jpg",
     "gallery": ["images/projets/arcadia/box1.jpg","images/projets/arcadia/grotte_slime.png"]
   },
-  { "slug": "frostpunk", "title": "Frostland Reborn",   "year": 2025,
+  { "id": 2, "slug": "frostpunk", "title": "Frostland Reborn",   "year": 2025,
     "tags": ["Modding","Unreal"], "excerpt": "Conception narrative et gameplay.",
     "cover": "images/projets/frostpunk/cover.jpg",
     "gallery": ["images/projets/frostpunk/20250830_1.jpg"]
   },
-  { "slug": "kyvos",     "title": "Kyvos",              "year": 2025,
+  { "id": 3, "slug": "kyvos",     "title": "Kyvos",              "year": 2025,
     "tags": ["Prototype"], "excerpt": "Itérations gameplay et level design.",
     "cover": "images/projets/kyvos/cover.jpg",
     "gallery": ["images/projets/kyvos/kyvos1.jpg"]
   },
-  { "slug": "red",       "title": "Red Dead Reload",    "year": 2025,
+  { "id": 4, "slug": "red",       "title": "Red Dead Reload",    "year": 2025,
     "tags": ["Web"], "excerpt": "Mini-jeu inspiré western.",
     "cover": "images/projets/red/cover.jpg",
     "gallery": ["images/projets/red/redded_gameplay1.png"]
   },
-  { "slug": "3D",       "title": "Modélisation 3D",    "year": 2025,
+  { "id": 5, "slug": "3D",       "title": "Modélisation 3D",    "year": 2025,
     "tags": ["Perssonage"], "excerpt": "Modélisation 3D",
     "cover": "images/projets/3d/cover.png",
     "gallery": ["images/projets/3d/Rendus_01.png"]
