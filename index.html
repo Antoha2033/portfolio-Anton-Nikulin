@@ -13,9 +13,15 @@
 </head>
 
 <body>
+<video id="bg-video" autoplay muted loop playsinline>
+  <source src="videos/Composition.mp4" type="video/mp4" />
+</video>
+
+
+
   <header>
     <nav class="container-header">
-      <a class="logo" href="index.html">Anton Nikulin</a>
+      <a class="panel logo" href="index.html">Anton Nikulin</a>
       <ul>
         <li><a href="#">Logiciels</a></li>
         <li><a href="#a-propos">À propos</a></li>
@@ -24,14 +30,11 @@
     </nav>
   </header>
 
-  <!-- Background video -->
-  <video autoplay muted loop playsinline id="bg-video">
-    <source src="videos/Composition.mp4" type="video/mp4" />
-  </video>
+
 
   <main>
     <!-- Intro -->
-    <section id="intro" class="intro" aria-label="Introduction">
+    <section id="intro" class="panel intro" aria-label="Introduction">
       <div class="intro__stack">
         <h1 class="intro__name" data-anim="name">Anton&nbsp;Nikulin</h1>
         <div class="intro__cues" aria-hidden="true">
@@ -40,9 +43,10 @@
         </div>
       </div>
     </section>
-    
+
+
     <!-- À propos -->
-    <section id="a-propos" class="presentation" aria-labelledby="about-title">
+    <section id="a-propos" class="panel presentation" aria-labelledby="about-title">
       <div class="textes">
         <h2 id="about-title">À propos</h2>
 
@@ -66,18 +70,38 @@
       <div class="photo" aria-label="Portrait (à venir)">PHOTO</div>
     </section>
 
-        <!-- Projects / Carousel -->
-        <section id="projects" class="projects" aria-labelledby="projects-title">
-          <div class="projects__inner">
-            <h2 id="projects-title">Projects</h2>
-    
-            <!-- Vue app mount point -->
-            <div id="projects-carousel">
-              <!-- Vue component usage -->
-              <carousel-projects :items="items"></carousel-projects>
-            </div>
-          </div>
-        </section>
+
+
+
+    <!-- Compétences & Logiciels -->
+    <section id="logiciels" class="section logiciels">
+      <div class="container">
+        <h2>Compétences &amp; Logiciels</h2>
+
+        <div class="logo-label" id="logoLabel" role="status" aria-live="polite"></div>
+
+        <div class="logo-marquee" aria-label="Logos des logiciels utilisés">
+          <ul class="logo-track"></ul>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+    <!-- Projects / Carousel -->
+    <section id="projects" class="projects" aria-labelledby="projects-title">
+      <div class="projects__inner">
+        <h2 id="projects-title">Projects</h2>
+
+        <!-- Vue app mount point -->
+        <div id="projects-carousel">
+          <!-- Vue component usage -->
+          <carousel-projects :items="items"></carousel-projects>
+        </div>
+      </div>
+    </section>
 
     <!-- Make sure Vue is loaded, then your carousel code -->
     <script defer src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
@@ -93,8 +117,30 @@
   </footer>
 
   <!-- Scripts (one GSAP + your main.js) -->
-  <script defer src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
   <script defer src="js/main.js"></script>
+
+
+
+<!-- Scripts (place before </body>) -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3"></script>
+
+
+
+
+
 </body>
+
+<svg aria-hidden="true" width="0" height="0" style="position:absolute">
+  <defs>
+    <!-- maps your noise image 1:1 to a 120×120 ring viewBox -->
+    <pattern id="ringNoise" patternUnits="userSpaceOnUse" x="0" y="0" width="120" height="120">
+      <image href="images/projet/background/whiteNoise2.webp" x="0" y="0" width="120" height="120" />
+    </pattern>
+  </defs>
+</svg>
+
 
 </html>
