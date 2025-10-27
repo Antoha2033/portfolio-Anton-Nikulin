@@ -2,145 +2,178 @@
 <html lang="fr">
 
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Accueil - Anton Nikulin</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Portfolio d’Anton Nikulin — projets web, jeux 2D/VR, et expériences interactives.">
-  <link rel="stylesheet" href="css/style.css">
-  <script>
-    document.documentElement.classList.add('has-js');
-  </script>
+  <link rel="stylesheet" href="css/style.css" />
+  <script>document.documentElement.classList.add('has-js');</script>
 </head>
 
 <body>
-<video id="bg-video" autoplay muted loop playsinline>
-  <source src="videos/Composition.mp4" type="video/mp4" />
-</video>
+  <!-- Background video -->
+  <video id="bg-video" autoplay muted loop playsinline>
+    <source src="videos/Composition.mp4" type="video/mp4" />
+  </video>
 
-
-
+  <!-- Header -->
   <header>
-    <nav class="container-header">
-      <a class="panel logo" href="index.html">Anton Nikulin</a>
-      <ul>
-        <li><a href="#">Logiciels</a></li>
-        <li><a href="#a-propos">À propos</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+    <nav class="wrap header__bar">
+      <a class="logo" href="index.html">Anton Nikulin</a>
+      <nav class="nav__list">
+        <a class="nav__link" href="#a-propos">À propos</a>
+        <a class="nav__link" href="#pertinaces">Pertinaces</a>
+        <a class="nav__link" href="#projects">Projets</a>
+        <a class="nav__link" href="#contact">Contact</a>
+      </nav>
+
     </nav>
   </header>
 
-
-
   <main>
     <!-- Intro -->
-    <section id="intro" class="panel intro" aria-label="Introduction">
-      <div class="intro__stack">
-        <h1 class="intro__name" data-anim="name">Anton&nbsp;Nikulin</h1>
-        <div class="intro__cues" aria-hidden="true">
-          <span class="cue"></span>
-          <span class="cue"></span>
+    <section id="intro" class="intro" aria-label="Introduction">
+      <div class="wrap intro__wrap">
+        <div class="intro__stack">
+<p class="intro__tag">PORTFOLIO <span class="year">2025</span></p>
+<h1 class="intro__name" data-anim="name">Anton&nbsp;Nikulin</h1>
+          <div class="intro__cues" aria-hidden="true">
+            <span class="cue"></span>
+            <span class="cue"></span>
+          </div>
         </div>
       </div>
     </section>
 
-
     <!-- À propos -->
-    <section id="a-propos" class="panel presentation" aria-labelledby="about-title">
-      <div class="textes">
-        <h2 id="about-title">À propos</h2>
+    <section id="a-propos" class="section about" aria-labelledby="about-title">
+      <div class="wrap about__grid">
+        <div class="textes">
+          <h2 id="about-title">À propos</h2>
+          <p>
+            Je m'appelle <strong>Anton Nikulin</strong>, étudiant en Techniques d'intégration multimédia au
+            <strong>Cégep Montmorency</strong>. J’aime créer des expériences interactives qui croisent
+            <span class="color">programmation</span>, <span class="color">design visuel</span> et
+            <span class="color">narration</span>.
+          </p>
+          <p>
+            J’ai réalisé des projets en <span class="color">jeux 2D (Phaser)</span>, en
+            <span class="color">modélisation/animation 3D</span> et en installations
+            <span class="color">TouchDesigner</span>. Je cherche un <span class="color">stage</span> où
+            prototyper vite, apprendre, et contribuer à des projets créatifs.
+          </p>
+          <p><a href="#" class="btn-cv">Consultez mon CV↗</a></p>
+        </div>
 
-        <p>
-          Je m'appelle <strong>Anton Nikulin</strong>, étudiant en Techniques d'intégration multimédia au
-          <strong>Cégep Montmorency</strong>. J’aime créer des expériences interactives qui croisent
-          <span class="color">programmation</span>, <span class="color">design visuel</span> et
-          <span class="color">narration</span>.
-        </p>
-
-        <p>
-          J’ai réalisé des projets en <span class="color">jeux 2D (Phaser)</span>, en
-          <span class="color">modélisation/animation 3D</span> et en installations
-          <span class="color">TouchDesigner</span>. Je cherche un <span class="color">stage</span> où
-          prototyper vite, apprendre, et contribuer à des projets créatifs.
-        </p>
-
-        <p><a href="#" class="btn-cv">Consultez mon CV↗</a></p>
+        <div class="photo" aria-label="Portrait (à venir)">PHOTO</div>
       </div>
-
-      <div class="photo" aria-label="Portrait (à venir)">PHOTO</div>
     </section>
 
+    <!-- Pertinaces -->
+    <section id="pertinaces" class="section pertinaces" aria-labelledby="pertinaces-title">
+      <div class="wrap">
+        <h2 id="about-title">Pertinaces</h2>
 
+        <ul class="pertinaces__grid" role="list">
+          <li class="pertinaces__item">
+            <div class="pertinaces__icon" aria-hidden="true">
+              <img src="images/logos/3D.png" alt="">
+            </div>
+            <h3 class="pertinaces__label">3D</h3>
+            <p class="pertinaces__text">J’ai acquis de solides bases en modélisation, texturing et animation 3D avec
+              <span class="color">Autodesk Maya</span> et j’ai approfondi ma pratique sur
+              <span class="color">Blender</span> à travers des projets scolaires et personnels.
+            </p>
+          </li>
 
+          <li class="pertinaces__item">
+            <div class="pertinaces__icon" aria-hidden="true">
+              <img src="images/logos/Coding.png" alt="">
+            </div>
+            <h3 class="pertinaces__label">Coding</h3>
+            <p class="pertinaces__text">
+              Au cours de mes études, j’ai consacré l’essentiel de mon temps à maîtriser
+              <span class="color">HTML</span>, <span class="color">CSS</span> et
+              <span class="color">JavaScript</span>, ainsi que d’autres langages, afin de concevoir
+              des interfaces claires et performantes.
+            </p>
+          </li>
+
+          <li class="pertinaces__item">
+            <div class="pertinaces__icon" aria-hidden="true">
+              <img src="images/logos/Film.png" alt="">
+            </div>
+            <h3 class="pertinaces__label">Vidéo</h3>
+            <p class="pertinaces__text">
+              Durant ma formation, j’ai appris la prise en main des caméras et la conduite
+              de tournage en studio comme en extérieur. J’ai acquis les bases du montage vidéo
+              à partir de rushes filmés et de rendus 3D — en travaillant principalement
+              dans <span class="color">DaVinci Resolve</span> et
+              <span class="color">Adobe After Effects</span>.
+            </p>
+          </li>
+        </ul>
+
+      </div>
+    </section>
 
     <!-- Compétences & Logiciels -->
-    <section id="logiciels" class="section logiciels">
-      <div class="container">
+    <section id="logiciels" class="section skills">
+      <div class="wrap">
         <h2>Compétences &amp; Logiciels</h2>
-
         <div class="logo-label" id="logoLabel" role="status" aria-live="polite"></div>
-
         <div class="logo-marquee" aria-label="Logos des logiciels utilisés">
           <ul class="logo-track"></ul>
         </div>
       </div>
     </section>
 
-
-
-
-
     <!-- Projects / Carousel -->
-    <section id="projects" class="projects" aria-labelledby="projects-title">
-      <div class="projects__inner">
+    <section id="projects" class="section projects" aria-labelledby="projects-title">
+      <div class="wrap projects__inner">
         <h2 id="projects-title">Projects</h2>
-
-        <!-- Vue app mount point -->
         <div id="projects-carousel">
-          <!-- Vue component usage -->
           <carousel-projects :items="items"></carousel-projects>
         </div>
       </div>
     </section>
 
-    <!-- Make sure Vue is loaded, then your carousel code -->
+    <!-- Contacts -->
+    <section id="contact" class="section contact" aria-labelledby="contact-title">
+      <div class="wrap">
+        <h2 id="contact-title">Contacts</h2>
+
+        <ul class="contact__links">
+          <li><a class="contact__btn" href="mailto:anton.yourmail@example.com">Envoyez-moi un email</a></li>
+          <li><a class="contact__btn" href="https://www.linkedin.com/in/ton-profil" target="_blank"
+              rel="noopener">LinkedIn</a></li>
+          <li><a class="contact__btn" href="https://www.instagram.com/tonprofil" target="_blank"
+              rel="noopener">Instagram</a></li>
+        </ul>
+
+        <p class="contact__note"></p>
+      </div>
+    </section>
+
+    <!-- Vendor & app scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
     <script defer src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
     <script defer src="js/carousel.js"></script>
+    <script defer src="js/main.js"></script>
 
-
-    <!-- Contact placeholder -->
-    <section id="contact"></section>
-  </main>
-
-  <footer>
-    <p>Contacts: <a href="#">Email</a> | <a href="#">Indeed</a> | <a href="#">Instagram</a></p>
-  </footer>
-
-  <!-- Scripts (one GSAP + your main.js) -->
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
-  <script defer src="js/main.js"></script>
-
-
-
-<!-- Scripts (place before </body>) -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3"></script>
-
-
-
-
-
+    <!-- (optional) chart libs you had -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3"></script>
 </body>
 
+<!-- defs -->
 <svg aria-hidden="true" width="0" height="0" style="position:absolute">
   <defs>
-    <!-- maps your noise image 1:1 to a 120×120 ring viewBox -->
     <pattern id="ringNoise" patternUnits="userSpaceOnUse" x="0" y="0" width="120" height="120">
       <image href="images/projet/background/whiteNoise2.webp" x="0" y="0" width="120" height="120" />
     </pattern>
   </defs>
 </svg>
-
 
 </html>

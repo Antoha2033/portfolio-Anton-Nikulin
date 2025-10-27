@@ -18,5 +18,10 @@
     "tags": ["Web"], "excerpt": "Mini-jeu inspiré western.",
     "cover": "images/projets/red/cover.jpg",
     "gallery": ["images/projets/red/redded_gameplay1.png"]
+  },
+  { "slug": "3D",       "title": "Modélisation 3D",    "year": 2025,
+    "tags": ["Perssonage"], "excerpt": "Modélisation 3D",
+    "cover": "images/projets/3d/cover.png",
+    "gallery": ["images/projets/3d/Rendus_01.png"]
   }
 ]

@@ -28,7 +28,7 @@
         };
   
         const focusLink = (i) => {
-          const link = region.value?.querySelector(`[data-idx="${i}"] a`);
+          const link = region.value?.querySelector(`[data-idx="${i}"]`);
           link && link.focus();
         };
   

@@ -5,21 +5,38 @@ const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 window.addEventListener('DOMContentLoaded', () => {
   const nameEl = document.querySelector('[data-anim="name"]');
-  const cues = document.querySelectorAll('.cue');
+  const tagEl  = document.querySelector('.intro__tag');   // PORTFOLIO 2025
+  const cues   = document.querySelectorAll('.cue');
 
-  // Fallback: show static
+  // Reduced motion fallback
   if (reduce || typeof gsap === 'undefined') {
-    if (nameEl) { nameEl.style.opacity = 1; nameEl.style.transform = 'none'; }
-    cues.forEach(c => { c.style.opacity = 1; c.style.transform = 'none'; });
+    [nameEl, tagEl, ...cues].forEach(el => {
+      if (el) { el.style.opacity = 1; el.style.transform = 'none'; el.style.filter = 'none'; }
+    });
     return;
   }
 
-  // Intro animation
-  const tl = gsap.timeline({ defaults: { ease: 'power2.out' } });
-  tl.fromTo(nameEl, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.9 });
-  tl.fromTo(cues, { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.15 }, '+=0.8');
-  tl.to(cues, { y: 12, duration: 1.2, repeat: -1, yoyo: true, ease: 'sine.inOut' }, '>-0.1');
+  // Start states (extra soft)
+  if (tagEl) gsap.set(tagEl,  { opacity: 0, y: 24, filter: 'blur(20px)' });
+  if (nameEl) gsap.set(nameEl, { opacity: 0, y: 48, filter: 'blur(12px)', scale: 0.985 });
+
+  const tl = gsap.timeline({ defaults: { ease: 'power3.out' }, delay: 0.1 });
+
+  // Tag first
+  if (tagEl) tl.to(tagEl, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.2 });
+
+  // Big name entrance + gentle overshoot/settle
+  if (nameEl) {
+    tl.to(nameEl, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.8 }, tagEl ? '-=0.4' : 0)
+  }
+
+  // Cues fade in, then slow float
+  tl.fromTo(cues, { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.9, stagger: 0.2 }, '+=0.4')
+    .to(cues, { y: 14, duration: 1.8, repeat: -1, yoyo: true, ease: 'sine.inOut' }, '>-0.1');
 });
+
+
+
 
 
 /* ===== Logiciels marquee — GSAP ticker + smooth hover pause + label ===== */
@@ -202,10 +219,38 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 
+
+
 })();
 
 
 
 
 
+ // Map nav links to their target sections
+  const links = Array.from(document.querySelectorAll('.nav__link[href^="#"]'));
+  const sections = links
+    .map(a => document.querySelector(a.getAttribute('href')))
+    .filter(Boolean);
 
+  // Helper: set active link
+  const setActive = (id) => {
+    links.forEach(a => {
+      const match = a.getAttribute('href') === `#${id}`;
+      a.classList.toggle('is-active', match);
+    });
+  };
+
+  // Observe sections entering the viewport
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        setActive(entry.target.id);
+      }
+    });
+  }, {
+  rootMargin: `-${headerH + 8}px 0px -70% 0px`,   // push activation even higher
+  threshold: [0, 0.25, 0.6]
+  });
+
+  sections.forEach(sec => io.observe(sec));
