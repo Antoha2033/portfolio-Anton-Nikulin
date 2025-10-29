@@ -17,24 +17,7 @@
 
         
   
-        const onKey = (e) => {
-          if (!props.items?.length) return;
-          if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-            e.preventDefault();
-            active.value = (active.value + 1 + props.items.length) % props.items.length;
-            focusLink(active.value);
-          }
-          if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-            e.preventDefault();
-            active.value = (active.value - 1 + props.items.length) % props.items.length;
-            focusLink(active.value);
-          }
-        };
-  
-        const focusLink = (i) => {
-          const link = region.value?.querySelector(`[data-idx="${i}"]`);
-          link && link.focus();
-        };
+
   
         onMounted(() => {
           region.value?.addEventListener('keydown', onKey);
