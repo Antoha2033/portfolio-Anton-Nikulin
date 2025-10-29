@@ -20,7 +20,6 @@
   --text: #fff;
   --bg: #000;
 
-  /* Pertinaces scale */
   --container-max: 1100px;
   --gap: clamp(1rem, 2.5vw, 2rem);
   --title-size: clamp(1.6rem, 2.2vw, 2.2rem);
@@ -35,21 +34,19 @@
   
 }
 
+/* Cache les moustaches */
 [v-cloak] { display: none; }
-
-
 
 /* Base */
 *{ box-sizing: border-box; }
 html, body{ margin:0; padding:0; color:var(--text); background:var(--bg); }
 body{ font-family:"Absans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
-h1,h2,h3,strong,.strong{ font-weight:700; }
-a{ color:var(--accent); text-decoration:none; }
 
-html { scroll-behavior: smooth; }                  /* smooth scroll for in-page anchors */
-section[id] { scroll-margin-top: var(--header-h); }/* offset for fixed header */
+html { scroll-behavior: smooth; } /* smooth scroll for in-page anchors */
+section[id] { scroll-margin-top: var(--header-h); } /* offset for fixed header */
+.section{ padding-block: var(--section-space); } /* Donne de l'espace pour les Contacts */
 
-.section{ padding-block: var(--section-space); }
+
 
 
 /* =========================
@@ -59,15 +56,14 @@ section[id] { scroll-margin-top: var(--header-h); }/* offset for fixed header */
   position: fixed;
   inset: 0;
   width: 100vw;
-  height: 100dvh;            /* dynamic viewport height = correct on mobile */
-  object-fit: cover;         /* scale and crop like a background image */
-  object-position: center;   /* crop from center */
+  height: 100dvh;            
+  object-fit: cover;         
+  object-position: center;  
   z-index: 0;
   pointer-events: none;
   opacity: .7;
 }
 
-/* Fallback for browsers without dvh support */
 @supports not (height: 100dvh) {
   #bg-video { height: 100vh; }
 }
@@ -75,11 +71,14 @@ section[id] { scroll-margin-top: var(--header-h); }/* offset for fixed header */
 /* Optional extra safety for Safari oddities */
 #bg-video { min-width: 100%; min-height: 100%; }
 
+
+
+
 /* =========================
    HEADER
 ========================= */
 
-:root { --header-h: clamp(58px, 6vw, 84px); } /* header height dial */
+:root { --header-h: clamp(58px, 6vw, 84px); } /* Hauteur header */
 
 header{
   position: fixed;
@@ -91,8 +90,6 @@ header{
   -webkit-backdrop-filter: blur(6px);
 }
 
-main { padding-top: calc(var(--header-h) + 12px); }
-
 .header__bar{
   display: flex;
   align-items: center;
@@ -103,9 +100,10 @@ main { padding-top: calc(var(--header-h) + 12px); }
   padding-inline: var(--page-gutter);
 }
 
+/* Anton Nikulin */
 .logo{ color:#fff; font-weight:700; font-size:25px; }
 
-/* ---- Links (shared) ---- */
+/* ---- Links ---- */
 .nav__list a{ color:#fff; }
 .nav__link{
   position: relative;
@@ -135,8 +133,11 @@ main { padding-top: calc(var(--header-h) + 12px); }
   .nav__link::after, .nav__link{ transition: none; }
 }
 
+
+
+
 /* =========================
-   MOBILE FIRST (<=1000px)
+   MOBILE (<=1000px)
 ========================= */
 .nav__toggle { 
   display: inline-flex;
@@ -148,10 +149,9 @@ main { padding-top: calc(var(--header-h) + 12px); }
   background: rgba(255,255,255,0.12);
   backdrop-filter: blur(8px);
   cursor: pointer;
-  z-index: 1001; /* above the panel */
+  z-index: 1001; /* above all */
 }
 
-/* Off-canvas panel closed by default */
 .nav__list{
   position: fixed;
   top: 0; right: 0;
@@ -163,25 +163,30 @@ main { padding-top: calc(var(--header-h) + 12px); }
   gap: 8px;
   background: rgba(0,0,0,0.55);
   backdrop-filter: blur(12px);
-  transform: translateX(100%);     /* hidden */
-  transition: transform .28s ease; /* smooth slide; exists only on mobile */
+  transform: translateX(100%);     /* cachée */
+  transition: transform .28s ease; /* Glissement fluide ; disponible uniquement sur mobile */
   z-index: 1000;
 }
 .nav__list.is-open { transform: translateX(0); }
 .nav__list .nav__link{ display:block; padding:12px 4px; font-size:1.2rem; }
 
+
+
+
 /* =========================
    DESKTOP (>1000px)
 ========================= */
+
+/* cache le menu burger */
 @media (min-width: 1001px){
   .nav__toggle { display: none; }
   .nav__list{
-    position: static;      /* back in the flow */
+    position: static;     
     height: auto;
     width: auto;
     padding: 0;
-    transform: none;       /* no slide effect on desktop */
-    transition: none;      /* prevent any flash at the breakpoint */
+    transform: none;    
+    transition: none;      
     display: flex;
     flex-direction: row;
     gap: 30px;
@@ -195,37 +200,45 @@ main { padding-top: calc(var(--header-h) + 12px); }
 
 
 
+
 /* =========================
    INTRO
 ========================= */
 
-/* small label above the name */
+/* tags du projet */
 .intro__tag{
   margin: 0 0 .35rem;
   font-size: clamp(1.05rem, 1.6vw, 1.6rem);
   font-weight: 700;
   letter-spacing: .08em;
   text-transform: uppercase;
-  color: var(--fg-dim);       /* subtle */
+  color: var(--fg-dim);  
   line-height: 1;
 }
-.intro__tag .year{ color: var(--accent); } /* 2025 in gold */
+/* année du projet */
+.intro__tag .year{ color: var(--accent); } 
 
 
 
+/* Code pour centrer le titre + année */
 .intro{ min-height:100vh; min-height:100dvh; }
 .intro__wrap{ min-height:inherit; display:grid; place-items:center; text-align:center; }
 .intro__stack{ transform: translateY(-6vh); }
 .intro__name{ margin:0; font-weight:800; font-size: clamp(2.8rem, 9vw, 8rem); }
 
-@media (min-width:1200px){ .intro__cues{ --cue-size:40px;} }
+/* @media (min-width:1200px){ .intro__cues{ --cue-size:40px;} }
 .cue{ width:0; height:0; border-left:calc(var(--cue-size)*.5) solid transparent; border-right:calc(var(--cue-size)*.5) solid transparent; border-top:var(--cue-size) solid #e6e6e6; }
 .has-js .intro__name{ opacity:0; transform:translateY(12px); }
 .has-js .cue{ opacity:0; transform:translateY(-8px); }
 @media (prefers-reduced-motion: reduce){ .has-js .intro__name, .has-js .cue{ opacity:1 !important; transform:none !important; } }
-@media (max-width:600px){ .intro__stack{ transform: translateY(-3vh); } .intro__cues{ margin-top:6px; gap:4px; } }
+@media (max-width:600px){ .intro__stack{ transform: translateY(-3vh); } .intro__cues{ margin-top:6px; gap:4px; } } */
 
-/* ===== Intro meta (tags + excerpt under the title) ===== */
+
+
+
+/* =========================
+   INTRO
+========================= */
 
 .intro__meta{
   margin-top: clamp(10px, 1.8vh, 18px);
@@ -236,11 +249,11 @@ main { padding-top: calc(var(--header-h) + 12px); }
 }
 
 
-/* pill list */
+/* Tags */
 .chips{
   display: flex;
   flex-wrap: wrap;
-  color: var(--year-color, #F4C361);   /* replace the hex if your year uses a different color */
+  color: var(--year-color, #F4C361);
   gap: 10px;     
   padding: 0;
   margin: 0;
@@ -248,15 +261,15 @@ main { padding-top: calc(var(--header-h) + 12px); }
   font-size: 25px;
 }
 
-.chip {
-  color: currentColor;                 /* inherit the yellow from .chips */
+/*.chip {
+  color: currentColor;
   background: none;
   border: none;
   border-radius: 0;
   padding: 0;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
-}
+}*/
 
 /* excerpt under chips */
 .intro__excerpt{
@@ -283,7 +296,7 @@ main { padding-top: calc(var(--header-h) + 12px); }
 
 /* Wrapper that keeps text in your normal content width */
 .project-casestudy {
-  max-width: 1600px;                 /* match your site’s content width */
+  max-width: 1600px; /* match your site’s content width */
   margin-inline: auto;
   padding-inline: clamp(16px, 3vw, 32px);
 }
@@ -627,17 +640,7 @@ CONTACT / FOOTER SECTION
 
 
 
-
-
-
-
-
-
-
 /* === Unified section H2 === */
-
-
-/* If your H2 has id="info-title" */
 .info__title,
 #contact h2 {
   font-size: 40px;

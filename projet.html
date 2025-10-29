@@ -7,18 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Portfolio d’Anton Nikulin — projets web, jeux 2D/VR, et expériences interactives.">
   <link rel="stylesheet" href="css/projets.css" />
-
+  <!-- scripts -->
   <script defer src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
   <script defer src="js/projet.js"></script>
-
-
-  <style>
-    [v-cloak] {
-      display: none
-    }
-  </style> <!-- hide mustaches until Vue mounts -->
 
 </head>
 
@@ -28,14 +21,14 @@
     <source src="videos/Composition.mp4" type="video/mp4" />
   </video>
 
-
+  <!-- Header -->
   <header>
     <nav class="wrap header__bar">
       <a class="logo" href="index.html">Anton Nikulin</a>
       <button class="nav__toggle" aria-label="Ouvrir le menu" aria-controls="site-menu" aria-expanded="false">☰</button>
 
 
-      <!-- Sliding panel WITH the expected id -->
+      <!-- header links -->
       <nav id="site-menu" class="nav__list">
         <a class="nav__link" href="index.html#a-propos">À propos</a>
         <a class="nav__link" href="index.html#pertinaces">Mes Spécialités</a>
@@ -46,41 +39,30 @@
   </header>
 
 
+  <!-- Project -->
   <main id="main" class="wrap">
     <div id="project-app" v-cloak>
       <!-- Loading / error -->
       <div v-if="loading" class="notice notice--muted">Chargement…</div>
       <div v-else-if="error" class="notice notice--danger" role="alert">{{ error }}</div>
 
-      <!-- Project -->
+
       <article v-else class="project">
-        <!-- Cover -->
-
-
-
-
         <!-- Intro -->
         <section id="intro" class="intro" aria-label="Introduction">
           <div class="wrap intro__wrap">
             <div class="intro__stack">
               <p class="intro__tag"><span class="year">{{ project.year }}</span></p>
               <h1 class="intro__name" data-anim="name">{{ project.title }}</h1>
-
               <div class="intro__meta" v-if="project">
                 <ul v-if="project.tags && project.tags.length" class="chips" aria-label="Tags">
                   <li v-for="(t,i) in project.tags" :key="i" class="chip">{{ t }}</li>
                 </ul>
                 <p v-if="project.excerpt" class="intro__excerpt">{{ project.excerpt }}</p>
               </div>
-
             </div>
           </div>
         </section>
-
-
-
-
-
 
         <!-- Alternating slices (uses your existing CSS classes) -->
         <section class="project-casestudy" v-if="project">
@@ -92,7 +74,7 @@
                 <!-- inside the template v-if="idx===0||idx===2" -->
                 <h3>{{ idx === 0 ? 'Quel est ce projet' : 'Outils utilisés' }}</h3>
                 <p v-text="project['text' + (idx + 1)]"></p>
-                
+
               </div>
             </template>
             <template v-else>
@@ -109,7 +91,6 @@
         <!-- More media (carousel) -->
         <section class="project-media" v-if="project && project.gallery?.length">
           <div class="wrap project-media__inner">
-            <h2 class="project-media__title"></h2>
             <div id="media-carousel">
               <carousel-media :items="project.gallery" :altprefix="project.title"></carousel-media>
             </div>
@@ -125,28 +106,23 @@
 
             <dl class="info__list">
               <div class="info__item">
-                <dt class="info__label">Statut :</dt>
+                <dt class="info__label">Statut</dt>
                 <dd class="info__value">
                   {{ project.status }}
-                  <!-- or static text:
-          Projet terminé, gagnant du concours officiel Frostpunk 2 (catégorie Frostlands Mod).
-          -->
                 </dd>
               </div>
 
               <div class="info__item">
-                <dt class="info__label">Outils utilisés :</dt>
+                <dt class="info__label">Outils utilisés</dt>
                 <dd class="info__value">
                   {{ project.tools }}
-                  <!-- ex: FrostKit, Unreal Engine 5 -->
                 </dd>
               </div>
 
               <div class="info__item">
-                <dt class="info__label">Date :</dt>
+                <dt class="info__label">Date</dt>
                 <dd class="info__value">
                   {{ project.date }}
-                  <!-- ex: September 15 2025 -->
                 </dd>
               </div>
             </dl>
@@ -172,10 +148,10 @@
             <h2 id="contact-title">Contactez-moi</h2>
 
             <ul class="contact__links">
-              <li><a class="contact__btn" href="mailto:anton.yourmail@example.com">Envoyez-moi un email</a></li>
-              <li><a class="contact__btn" href="https://www.linkedin.com/in/ton-profil" target="_blank"
+              <li><a class="contact__btn" href="mailto:antoha.nikulin@gmail.com">Envoyez-moi un email</a></li>
+              <li><a class="contact__btn" href="https:https://www.linkedin.com/feed/"
                   rel="noopener">LinkedIn</a></li>
-              <li><a class="contact__btn" href="https://www.instagram.com/tonprofil" target="_blank"
+              <li><a class="contact__btn" href="https://www.instagram.com/anton.nikulin.5245/"
                   rel="noopener">Instagram</a></li>
             </ul>
 

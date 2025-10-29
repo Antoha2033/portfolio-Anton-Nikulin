@@ -6,21 +6,12 @@
   <title>PORTFOLIO - Anton Nikulin</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-  <style>
-    /* Respect users who prefer less motion */
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        animation: none !important;
-        transition: none !important;
-        scroll-behavior: auto !important;
-      }
-    }
-  </style>
-
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Portfolio d’Anton Nikulin — projets web, jeux 2D/VR, et expériences interactives.">
   <link rel="stylesheet" href="css/style.css" />
-  <script>document.documentElement.classList.add('has-js');</script>
+  <script>
+    document.documentElement.classList.add('has-js');
+  </script>
 </head>
 
 <body>
@@ -30,20 +21,19 @@
   </video>
 
   <!-- Header -->
-<header>
-  <nav class="wrap header__bar">
-    <a class="logo" href="index.html">Anton Nikulin</a>
-    <button class="nav__toggle" aria-label="Ouvrir le menu"
-            aria-controls="site-menu" aria-expanded="false">☰</button>
+  <header>
+    <nav class="wrap header__bar">
+      <a class="logo" href="index.html">Anton Nikulin</a>
+      <button class="nav__toggle" aria-label="Ouvrir le menu" aria-controls="site-menu" aria-expanded="false">☰</button>
 
-    <nav id="site-menu" class="nav__list">
-      <a class="nav__link" href="#a-propos">À propos</a>
-      <a class="nav__link" href="#pertinaces">Mes Spécialités</a>
-      <a class="nav__link" href="#projects">Mes Projets</a>
-      <a class="nav__link" href="#contact">Contactez-moi</a>
+      <nav id="site-menu" class="nav__list">
+        <a class="nav__link" href="#a-propos">À propos</a>
+        <a class="nav__link" href="#pertinaces">Mes Spécialités</a>
+        <a class="nav__link" href="#projects">Mes Projets</a>
+        <a class="nav__link" href="#contact">Contactez-moi</a>
+      </nav>
     </nav>
-  </nav>
-</header>
+  </header>
 
   <main>
     <!-- Intro -->
@@ -159,10 +149,10 @@
         <h2 id="contact-title">Contactez-moi</h2>
 
         <ul class="contact__links">
-          <li><a class="contact__btn" href="mailto:anton.yourmail@example.com">Envoyez-moi un email</a></li>
-          <li><a class="contact__btn" href="https://www.linkedin.com/in/ton-profil" target="_blank"
+          <li><a class="contact__btn" href="mailto:antoha.nikulin@gmail.com">Envoyez-moi un email</a></li>
+          <li><a class="contact__btn" href="https://www.linkedin.com/feed/"
               rel="noopener">LinkedIn</a></li>
-          <li><a class="contact__btn" href="https://www.instagram.com/tonprofil" target="_blank"
+          <li><a class="contact__btn" href="https://www.instagram.com/anton.nikulin.5245/"
               rel="noopener">Instagram</a></li>
         </ul>
 
@@ -170,25 +160,16 @@
       </div>
     </section>
 
-    <!-- Vendor & app scripts -->
+    <!-- scripts -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
     <script defer src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
     <script defer src="js/carousel.js"></script>
     <script defer src="js/main.js"></script>
 
-    <!-- (optional) chart libs you had -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3"></script>
 </body>
 
-<!-- defs -->
-<svg aria-hidden="true" width="0" height="0" style="position:absolute">
-  <defs>
-    <pattern id="ringNoise" patternUnits="userSpaceOnUse" x="0" y="0" width="120" height="120">
-      <image href="images/projet/background/whiteNoise2.webp" x="0" y="0" width="120" height="120" />
-    </pattern>
-  </defs>
-</svg>
+
 
 </html>

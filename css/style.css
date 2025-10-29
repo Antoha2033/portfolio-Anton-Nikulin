@@ -36,7 +36,6 @@
   
 }
 
-
 /* Base */
 *{ box-sizing: border-box; }
 html, body{ margin:0; padding:0; color:var(--text); background:var(--bg); }
@@ -52,6 +51,9 @@ section[id] { scroll-margin-top: var(--header-h); }/* offset for fixed header */
 .wrap{ max-width:var(--page-max); margin-inline:auto; padding-inline:var(--page-gutter); }
 .section{ padding-block: var(--section-space); }
 
+
+
+
 /* =========================
    BACKGROUND VIDEO
 ========================= */
@@ -61,11 +63,14 @@ section[id] { scroll-margin-top: var(--header-h); }/* offset for fixed header */
 }
 body > *:not(#bg-video):not(#bg-overlay):not(header){ position:relative; z-index:1;  }
 
+
+
+
 /* =========================
    HEADER
 ========================= */
 
-:root { --header-h: clamp(58px, 6vw, 84px); } /* header height dial */
+:root { --header-h: clamp(58px, 6vw, 84px); }
 
 header{
   position: fixed;
@@ -77,7 +82,6 @@ header{
   -webkit-backdrop-filter: blur(6px);
 }
 
-main { padding-top: calc(var(--header-h) + 12px); }
 
 .header__bar{
   display: flex;
@@ -89,6 +93,7 @@ main { padding-top: calc(var(--header-h) + 12px); }
   padding-inline: var(--page-gutter);
 }
 
+/* Anton Nikulin */
 .logo{ color:#fff; font-weight:700; font-size:25px; }
 
 /* ---- Links (shared) ---- */
@@ -121,6 +126,9 @@ main { padding-top: calc(var(--header-h) + 12px); }
   .nav__link::after, .nav__link{ transition: none; }
 }
 
+
+
+
 /* =========================
    MOBILE FIRST (<=1000px)
 ========================= */
@@ -134,10 +142,10 @@ main { padding-top: calc(var(--header-h) + 12px); }
   background: rgba(255,255,255,0.12);
   backdrop-filter: blur(8px);
   cursor: pointer;
-  z-index: 1001; /* above the panel */
+  z-index: 1001; /* above All */
 }
 
-/* Off-canvas panel closed by default */
+
 .nav__list{
   position: fixed;
   top: 0; right: 0;
@@ -149,25 +157,30 @@ main { padding-top: calc(var(--header-h) + 12px); }
   gap: 8px;
   background: rgba(0,0,0,0.55);
   backdrop-filter: blur(12px);
-  transform: translateX(100%);     /* hidden */
-  transition: transform .28s ease; /* smooth slide; exists only on mobile */
+  transform: translateX(100%);     /* cachée */
+  transition: transform .28s ease; /* Glissement fluide ; disponible uniquement sur mobile */
   z-index: 1000;
 }
 .nav__list.is-open { transform: translateX(0); }
 .nav__list .nav__link{ display:block; padding:12px 4px; font-size:1.2rem; }
 
+
+
+
 /* =========================
    DESKTOP (>1000px)
 ========================= */
+
+/* cache le menu burger */
 @media (min-width: 1001px){
   .nav__toggle { display: none; }
   .nav__list{
-    position: static;      /* back in the flow */
+    position: static;     
     height: auto;
     width: auto;
     padding: 0;
-    transform: none;       /* no slide effect on desktop */
-    transition: none;      /* prevent any flash at the breakpoint */
+    transform: none;    
+    transition: none;      
     display: flex;
     flex-direction: row;
     gap: 30px;
@@ -181,35 +194,41 @@ main { padding-top: calc(var(--header-h) + 12px); }
 
 
 
+
 /* =========================
    INTRO
 ========================= */
 
-/* small label above the name */
+/* tags du projet */
 .intro__tag{
   margin: 0 0 .35rem;
   font-size: clamp(1.05rem, 1.6vw, 1.6rem);
   font-weight: 700;
   letter-spacing: .08em;
   text-transform: uppercase;
-  color: var(--fg-dim);       /* subtle */
+  color: var(--fg-dim);     
   line-height: 1;
 }
-.intro__tag .year{ color: var(--accent); } /* 2025 in gold */
+/* année du projet */
+.intro__tag .year{ color: var(--accent); }
 
 
-
+/* Code pour centrer le titre + année */
 .intro{ min-height:100vh; min-height:100dvh; }
 .intro__wrap{ min-height:inherit; display:grid; place-items:center; text-align:center; }
 .intro__stack{ transform: translateY(-6vh); }
 .intro__name{ margin:0; font-weight:800; font-size: clamp(2.8rem, 9vw, 8rem); }
 .intro__cues{ display:flex; flex-direction:column; align-items:center; gap:6px; margin-top:8px; pointer-events:none; --cue-size:34px; }
+
 @media (min-width:1200px){ .intro__cues{ --cue-size:40px;} }
 .cue{ width:0; height:0; border-left:calc(var(--cue-size)*.5) solid transparent; border-right:calc(var(--cue-size)*.5) solid transparent; border-top:var(--cue-size) solid #e6e6e6; }
 .has-js .intro__name{ opacity:0; transform:translateY(12px); }
 .has-js .cue{ opacity:0; transform:translateY(-8px); }
 @media (prefers-reduced-motion: reduce){ .has-js .intro__name, .has-js .cue{ opacity:1 !important; transform:none !important; } }
 @media (max-width:600px){ .intro__stack{ transform: translateY(-3vh); } .intro__cues{ margin-top:6px; gap:4px; } }
+
+
+
 
 /* =========================
    À PROPOS
@@ -271,6 +290,10 @@ transition: background-color .25s ease, color .25s ease, transform .15s ease;}
 /* kill any leftover fades */
 #a-propos{ opacity:1 !important; transform:none !important; animation:none !important; transition:none !important; }
 
+
+
+
+
 /* =========================
    PERTINACES
 ========================= */
@@ -316,6 +339,10 @@ transition: background-color .25s ease, color .25s ease, transform .15s ease;}
 
 .color { color: var(--accent); }
 
+
+
+
+
 /* =========================
    LOGICIELS (skills)
 ========================= */
@@ -340,6 +367,9 @@ transition: background-color .25s ease, color .25s ease, transform .15s ease;}
 .logo-track img:hover{ transform:scale(1.06); filter:none; opacity:1; }
 .logo-label{ min-height:1.6em; text-align:center; margin-bottom:6px; font-size:clamp(1rem, 2.4vw, 1.25rem); font-weight:700; color:var(--accent); letter-spacing:.02em; opacity:0; transform:translateY(6px); pointer-events:none; }
 
+
+
+
 /* =========================
    PROJECTS
 ========================= */
@@ -359,6 +389,9 @@ transition: background-color .25s ease, color .25s ease, transform .15s ease;}
   .card{ flex:1 1 calc(50% - 16px); min-height:300px; }
   .card.is-active{ flex-basis: calc(100% - 16px); }
 }
+
+
+
 
 /* =============== 
 CONTACT / FOOTER SECTION 
@@ -440,7 +473,7 @@ CONTACT / FOOTER SECTION
 #projects h2,
 #contact h2{
   font-size: 40px;
-  color: var(--accent);          /* your golden yellow */
+  color: var(--accent);         
   letter-spacing: .02em;
   margin: 0 0 2rem;
 }
