@@ -7,16 +7,12 @@
       props: { items: { type: Array, required: true } },
       setup(props) {
         const active = ref(-1); // -1 = none (all equal)
-
-        
+  
   
         // accessibility: expand on keyboard focus and arrow keys
         const region = ref(null);
         const setActive = (i) => { active.value = i; };
         const clearActive = () => { active.value = -1; };
-
-        
-  
 
   
         onMounted(() => {
