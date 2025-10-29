@@ -3,10 +3,16 @@ document.documentElement.classList.add('has-js');
 
 const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+
+/* =========================
+GSAP ANIMATION INTRO
+========================= */
+
+
 window.addEventListener('DOMContentLoaded', () => {
-  const nameEl = document.querySelector('[data-anim="name"]');
+  const nameEl = document.querySelector('[data-anim="name"]'); // ANTON NIKULIN
   const tagEl  = document.querySelector('.intro__tag');   // PORTFOLIO 2025
-  const cues   = document.querySelectorAll('.cue');
+  const cues   = document.querySelectorAll('.cue'); // TRIANGLES
 
   // Reduced motion fallback
   if (reduce || typeof gsap === 'undefined') {
@@ -36,6 +42,9 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 
+/* =========================
+GSAP ANIMATION LOGICIELS
+========================= */
 
 
 
@@ -215,25 +224,20 @@ window.addEventListener('DOMContentLoaded', () => {
     track.addEventListener("dragstart", e => e.preventDefault());
   });
 
-  
-
-
-
-
-
 })();
 
 
-
-
+/* =========================
+BURGER MENU
+========================= */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1) Read CSS var BEFORE using it
+  //  Read CSS var BEFORE using it
   const cssHeader = getComputedStyle(document.documentElement)
     .getPropertyValue('--header-h').trim();
   const headerH = parseFloat(cssHeader) || 80;
 
-  // 2) Burger toggle (works on both pages)
+  //  Burger toggle (works on both pages)
   const btn  = document.querySelector('.nav__toggle');
   const menu = document.getElementById('site-menu');
 
@@ -265,7 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         : mq.addListener(handleMQ);
   }
 
-  // 3) Active-link observer (only for same-page anchors)
+  //  Active-link observer (only for same-page anchors)
   const links = Array.from(document.querySelectorAll('.nav__link[href^="#"]'));
   const sections = links
     .map(a => document.querySelector(a.getAttribute('href')))

@@ -1,7 +1,9 @@
-// projet.js — simple Options API, single app, one mount, fetch in mounted()
+/* =========================
+SCROLL TRIGGER
+========================= */
 
-// If you use GSAP/ScrollTrigger on this page, make sure their <script> tags
-// are included BEFORE this file in projet.html.
+
+
 document.documentElement.classList.add('has-js');
 
 const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
