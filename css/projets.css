@@ -2,16 +2,13 @@
    GLOBAL SETTINGS
 ========================= */
 
-/* Font faces */
-@font-face{
+/* Absans Regular */
+@font-face {
   font-family: "Absans";
   src: url("../fonts/Absans-Regular.otf") format("opentype");
-  font-weight: 400; font-style: normal; font-display: swap;
-}
-@font-face{
-  font-family: "Absans";
-  src: url("../fonts/Absans-Bold.otf") format("opentype");
-  font-weight: 700; font-style: normal; font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
 :root{
@@ -342,10 +339,23 @@ main { padding-top: calc(var(--header-h) + 12px); }
   margin-right: 0;
 }
 
+.project-slice .copy h3{
+  font-size: 30px;
+  line-height: 1.25;
+  font-weight: 700;
+  color:var(--accent);
+}
+
+.project-slice .copy p{
+  font-size: 25px;
+  line-height: 1.7;
+  margin: 0;
+}
 
 /* Copy width for comfortable reading */
 .project-slice .copy {
   max-width: 600px;
+  
 }
 
 /* Images: responsive, capped at ~700px */

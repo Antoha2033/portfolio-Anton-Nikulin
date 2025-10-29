@@ -8,39 +8,53 @@
   "excerpt": "Prototype de borne arcade.",
   "cover": "images/projets/arcadia/cover.jpg",
   "gallery": [
-    "images/projets/arcadia/box1.jpg",
+    "images/projets/arcadia/cover.jpg",
     "images/projets/arcadia/grotte_slime.png",
-    "images/projets/arcadia/cover.jpg"
+    "images/projets/arcadia/box1.jpg",
+    "images/projets/arcadia/Image (1).jpg",
+    "images/projets/arcadia/Image (2).jpg",
+    "images/projets/arcadia/Image (3).jpg",
+    "images/projets/arcadia/royaume_champignon.png"
   ],
-  "text1": "AAA",
-  "text2": "Mon rôle : conception gameplay et intégration.",
-  "text3": "Résultats et leçons apprises.",
+  "text1": "Arcadia représentait notre projet final du cours Expérimentation multimédia interactive. Il s’agit d’un jeu de plateforme 2D inspiré des jeux d’arcade rétro, conçu comme une installation interactive complète, combinant gameplay, son et présentation physique à travers une borne d’arcade construite sur mesure.",
+  "text2": "J’étais l’un des deux programmeurs principaux, responsable du développement du jeu en JavaScript avec Phaser, ainsi que de l’assemblage et de l’intégration de la borne d’arcade physique. J’ai aussi contribué au débogage, à l’intégration des assets et à l’ajustement du gameplay.",
+  "text3": "Notre projet s’appuyait principalement sur Phaser et Visual Studio Code pour la majorité du développement. En dehors de la programmation, nous avons utilisé Tiled pour concevoir les environnements et créé une grande partie des éléments visuels dans Adobe Photoshop et Illustrator. Pour la conception sonore, même si je n’étais pas directement responsable de cette partie, notre équipe a utilisé Reaper et Surge XT pour produire et mixer l’audio.",
+  "status": "Projet terminé.",
+  "tools": "Visual Studio Code, Phaser, Tiled, Adobe Illustrator / Photoshop, Reaper.",
+  "date": "Printemps 2025",
   "links": [
-    { "label": "Page du projet", "url": "#" },
-    { "label": "GitHub / Code", "url": "#" }
+    { "label": "Page Github du projet", "url": "https://github.com/Cousi-Cousa/Arcadia" }
   ]
 }
 ,
   {
   "id": 2,
-  "slug": "frostpunk",
+  "slug": "Frostpunk 2",
   "title": "Frostland Reborn",
   "year": 2025,
-  "tags": ["Modding", "Unreal"],
+  "tags": ["Modding"],
   "excerpt": "Conception narrative et gameplay.",
-  "cover": "images/projets/frostpunk/cover.jpg",
+  "cover": "images/projets/frostpunk/cover.png",
   "gallery": [
-    "images/projets/frostpunk/20250830_1.jpg",
-    "images/projets/frostpunk/Image (1).jpg",
-    "images/projets/frostpunk/royaume_championpng.png"
+    
+    "images/projets/frostpunk/cover.png",
+    "images/projets/frostpunk/20250830202304_1.1.jpg",
+    "images/projets/frostpunk/20250830224009_1.1.jpg",
+    "images/projets/frostpunk/20250830180959_1.1.jpg",
+    "images/projets/frostpunk/cover2.jpg",
+    "images/projets/frostpunk/FP2_Mod_Contest_Winners_Annocuncement_1920x1080_1.jpg"
+    
   ],
-  "text1": "BBB",
-  "text2": "Mon rôle sur le mod et les outils utilisés.",
-  "text3": "Pourquoi ce projet et son impact.",
+  "text1": "Projet personnel réalisé en dehors de mes études. J’ai participé au concours officiel de modding pour Frostpunk 2, organisé par 11 bit studios. Mon mod, Frostland Reborn, ajoute davantage de variété d’exploration au mode sandbox (Utopia Builder), en intégrant de nouveaux sites d’intérêt narratifs et de petites modifications de gameplay pour rendre l’expérience plus riche et immersive.",
+  "text2": "JJ’étais le seul développeur de ce mod. J’ai conçu et intégré de nouvelles localisations jouables, et rédigé tous les textes narratifs et descriptifs.",
+  "text3": "Le cœur du projet a été réalisé avec l’outil officiel de modding du jeu, FrostKit, fondé sur Unreal Engine 5.",
+  "status": "Projet terminé. Frostland Reborn a remporté l’un des principaux prix du concours officiel de modding Frostpunk 2 (2025), dans la catégorie Frostlands Mod.",
+  "tools": "Unreal Engine 5, Frostkit.",
+  "date": "Septembre 2025",
   "links": [
-    { "label": "Mod.IO", "url": "#" },
-    { "label": "Annonce des résultats – Steam", "url": "#" },
-    { "label": "Annonce du concours – Steam", "url": "#" }
+    { "label": "Mod.IO", "url": "https://mod.io/g/frostpunk2/m/frostland-reborn#description" },
+    { "label": "Annonce des résultats – Steam", "url": "https://store.steampowered.com/news/app/1601580/view/576019638373057148" },
+    { "label": "Annonce du concours – Steam", "url": "https://store.steampowered.com/news/app/1601580/view/498325386812199405" }
   ]
 }
 ,
@@ -50,33 +64,25 @@
     "title": "Kyvos",
     "year": 2023,
     "tags": [
-      "Prototype"
+      "Vidéo"
     ],
-    "excerpt": "Itérations gameplay et level design.",
+    "excerpt": "Animation abstraite",
     "cover": "images/projets/kyvos/cover.jpg",
     "gallery": [
       "images/projets/kyvos/kyvos2.png",
       "images/projets/kyvos/kyvos3.jpg",
       "images/projets/kyvos/kyvos5.jpg"
     ],
-    "text1": "CCC",
-    "text2": "Boucles de gameplay et tests.",
-    "text3": "Conclusion & prochaines étapes.",
-    "status": "Projet terminé, gagnant du concours officiel...",
-    "tools": "FrostKit, Unreal Engine 5",
-    "date": "September 15 2025",
+    "text1": "Projet final pour ANIMATION-3D et Conception sonore interactive. Il s’agit d’un court métrage entièrement en effets visuels 3D—une animation abstraite qui mêle des formes naturelles/organiques à des formes géométriques artificielles.",
+    "text2": "Créateur unique de l’œuvre : environnement et animation 3D, conception et mixage sonore, montage et livraison finale.",
+    "text3": "J’ai conçu l’environnement et les objets dans Maya 3D et réalisé l’ensemble des animations. Après un rendu image par image, j’ai assemblé et étalonné la vidéo dans DaVinci Resolve, puis ajouté les effets et les retouches finales dans After Effects.",
+    "status": "Projet terminé. Gagnant d'une bourse de 200 $ obtenue pour le projet Kyvos (3e place) au Concours d’essais audiovisuels 2023 — Collège Montmorency.",
+    "tools": "Maya 3D, Reaper, DaVinci Resolve, Adobe After Effects.",
+    "date": "19 mai 2023",
     "links": [
       {
-        "label": "Mod.IO",
-        "url": "https://mod.io/…"
-      },
-      {
-        "label": "Annonce des résultats du concours – Steam (Septembre 2025)",
-        "url": "https://store.steampowered.com/…"
-      },
-      {
-        "label": "Annonce du concours – Steam (Juillet 2025)",
-        "url": "https://store.steampowered.com/…"
+        "label": "Kyvos",
+        "url": "https://www.youtube.com/watch?v=ZYju_A0ftrw"
       }
     ]
   },
@@ -85,20 +91,23 @@
   "slug": "red",
   "title": "Red Dead Reload",
   "year": 2024,
-  "tags": ["Web", "Jeu"],
-  "excerpt": "Mini-jeu inspiré western.",
+  "tags": ["Web"],
+  "excerpt": "Jeu Web western",
   "cover": "images/projets/red/cover.jpg",
   "gallery": [
     "images/projets/red/Capture d’écran 2025-10-22 120752.png",
     "images/projets/red/cover.jpg",
-    "images/projets/red/Capture d’écran 2025-10-22 120729.png"
+    "images/projets/red/Capture d’écran 2025-10-22 120729.png",
+    "images/projets/red/Z80y8r.png"
   ],
-  "text1": "VVV",
-  "text2": "Système de tir et UI.",
-  "text3": "Retours utilisateurs.",
+  "text1": "Un jeu web développé avec Phaser, inspiré des shooters vue du dessus des arcades, avec une esthétique western. Réalisé comme projet final du cours Interactivité ludique.",
+  "text2": "J’étais le développeur unique : programmation du gameplay et des systèmes, intégration des assets (visuels/UI, SFX/musique), équilibrage et pipeline de build/publication.",
+  "text3": "Développé avec Phaser ; production principale dans Visual Studio Code. Visuels de niveau assemblés avec Tiled. Le jeu est publié sur itch.io.",
+  "status": "Projet terminé",
+  "tools": "Phaser, Visual Studio Code, Tiled, itch.io.",
+  "date": "7 octobre 2024",
   "links": [
-      { "label": "ArtStation", "url": "https://www.artstation.com/yourprofile" },
-      { "label": "Sketchfab", "url": "https://sketchfab.com/yourprofile" }
+      { "label": "Jouer à Red Dead Reload", "url": "https://anton-nikulin.itch.io/red-dead-reload" }
   ]
 }
 ,
@@ -112,15 +121,20 @@
   "cover": "images/projets/3d/cover.png",
   "gallery": [
     "images/projets/3d/Rendus_01.png",
+    "images/projets/3d/Rendus_02.png",
     "images/projets/3d/Rendus_07.png",
-    "images/projets/3d/Rendus_09.jpg"
+    "images/projets/3d/Rendus_08.png",
+    "images/projets/3d/Rendus_09.jpg",
+    "images/projets/3d/cover.png"
   ],
-  "text1": "DDD",
-  "text2": "Pipeline : blockout → sculpt → bake → texture.",
-  "text3": "Rendu final et lighting.",
+  "text1": "Ceci est un projet individuel réalisé au début de mes études à Montmorency : j’y ai appris les bases de la modélisation et du rigging d’un personnage 3D en créant un personnage stylisé de A à Z.",
+  "text2": "J’étais l’unique créateur—responsable de toute la production ainsi que de la présentation finale.",
+  "text3": "Maya 3D (modélisation, rigging et texturing réalisés directement dans l’application)",
+  "status": "Projet terminé",
+  "tools": "Maya 3D",
+  "date": "15 décembre 2022",
   "links": [
-    { "label": "ArtStation", "url": "#" },
-    { "label": "Sketchfab", "url": "#" }
+
   ]
 }
 

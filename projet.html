@@ -12,7 +12,7 @@
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
   <script defer src="js/projet.js"></script>
-  
+
 
   <style>
     [v-cloak] {
@@ -30,21 +30,20 @@
 
 
   <header>
-  <nav class="wrap header__bar">
-    <a class="logo" href="index.html">Anton Nikulin</a>
-    <button class="nav__toggle" aria-label="Ouvrir le menu"
-            aria-controls="site-menu" aria-expanded="false">☰</button>
+    <nav class="wrap header__bar">
+      <a class="logo" href="index.html">Anton Nikulin</a>
+      <button class="nav__toggle" aria-label="Ouvrir le menu" aria-controls="site-menu" aria-expanded="false">☰</button>
 
 
-    <!-- Sliding panel WITH the expected id -->
-    <nav id="site-menu" class="nav__list">
-      <a class="nav__link" href="index.html#a-propos">À propos</a>
-      <a class="nav__link" href="index.html#pertinaces">Mes Spécialités</a>
-      <a class="nav__link" href="index.html#projects">Mes Projets</a>
-      <a class="nav__link" href="#contact">Contactez-moi</a>
+      <!-- Sliding panel WITH the expected id -->
+      <nav id="site-menu" class="nav__list">
+        <a class="nav__link" href="index.html#a-propos">À propos</a>
+        <a class="nav__link" href="index.html#pertinaces">Mes Spécialités</a>
+        <a class="nav__link" href="index.html#projects">Mes Projets</a>
+        <a class="nav__link" href="#contact">Contactez-moi</a>
+      </nav>
     </nav>
-  </nav>
-</header>
+  </header>
 
 
   <main id="main" class="wrap">
@@ -90,13 +89,15 @@
             <template v-if="idx===0||idx===2">
               <div class="media"><img :src="img" :alt="project.title + ' '+(idx+1)"></div>
               <div class="copy">
-                <h3>Texte {{idx+1}}</h3>
-                <p v-text="project['text'+(idx+1)]"></p>
+                <!-- inside the template v-if="idx===0||idx===2" -->
+                <h3>{{ idx === 0 ? 'Quel est ce projet' : 'Outils utilisés' }}</h3>
+                <p v-text="project['text' + (idx + 1)]"></p>
+                
               </div>
             </template>
             <template v-else>
               <div class="copy">
-                <h3>Texte 2</h3>
+                <h3>Mon rôle</h3>
                 <p v-text="project.text2"></p>
               </div>
               <div class="media"><img :src="img" :alt="project.title + ' 2'"></div>
@@ -108,7 +109,7 @@
         <!-- More media (carousel) -->
         <section class="project-media" v-if="project && project.gallery?.length">
           <div class="wrap project-media__inner">
-            <h2 class="project-media__title">Plus d’images</h2>
+            <h2 class="project-media__title"></h2>
             <div id="media-carousel">
               <carousel-media :items="project.gallery" :altprefix="project.title"></carousel-media>
             </div>
