@@ -1,44 +1,57 @@
 [
+{
+  "id": 1,
+  "slug": "arcadia",
+  "title": "Arcadia",
+  "year": 2025,
+  "tags": ["Phaser", "Jeu 2D", "arcade"],
+  "excerpt": "Prototype de borne arcade.",
+  "cover": "images/projets/arcadia/cover.jpg",
+  "gallery": [
+    "images/projets/arcadia/box1.jpg",
+    "images/projets/arcadia/grotte_slime.png",
+    "images/projets/arcadia/cover.jpg"
+  ],
+  "text1": "AAA",
+  "text2": "Mon rôle : conception gameplay et intégration.",
+  "text3": "Résultats et leçons apprises.",
+  "links": [
+    { "label": "Page du projet", "url": "#" },
+    { "label": "GitHub / Code", "url": "#" }
+  ]
+}
+,
   {
-    "id": 1,
-    "slug": "arcadia",
-    "title": "Arcadia",
-    "year": 2025,
-    "tags": ["Phaser", "Jeu 2D", "arcade"],
-    "excerpt": "Prototype de borne arcade.",
-    "cover": "images/projets/arcadia/cover.jpg",
-    "gallery": [
-      "images/projets/arcadia/box1.jpg",
-      "images/projets/arcadia/grotte_slime.png",
-      "images/projets/arcadia/cover.jpg"
-    ],
-    "text1": "AAA",
-    "text2": "Mon rôle : conception gameplay et intégration.",
-    "text3": "Résultats et leçons apprises."
-  },
-  {
-    "id": 2,
-    "slug": "frostpunk",
-    "title": "Frostland Reborn",
-    "year": 2025,
-    "tags": ["Modding", "Unreal"],
-    "excerpt": "Conception narrative et gameplay.",
-    "cover": "images/projets/frostpunk/cover.jpg",
-    "gallery": [
-      "images/projets/frostpunk/20250830_1.jpg",
-      "images/projets/frostpunk/Image (1).jpg",
-      "images/projets/frostpunk/royaume_championpng.png"
-    ],
-    "text1": "BBB",
-    "text2": "Mon rôle sur le mod et les outils utilisés.",
-    "text3": "Pourquoi ce projet et son impact."
-  },
+  "id": 2,
+  "slug": "frostpunk",
+  "title": "Frostland Reborn",
+  "year": 2025,
+  "tags": ["Modding", "Unreal"],
+  "excerpt": "Conception narrative et gameplay.",
+  "cover": "images/projets/frostpunk/cover.jpg",
+  "gallery": [
+    "images/projets/frostpunk/20250830_1.jpg",
+    "images/projets/frostpunk/Image (1).jpg",
+    "images/projets/frostpunk/royaume_championpng.png"
+  ],
+  "text1": "BBB",
+  "text2": "Mon rôle sur le mod et les outils utilisés.",
+  "text3": "Pourquoi ce projet et son impact.",
+  "links": [
+    { "label": "Mod.IO", "url": "#" },
+    { "label": "Annonce des résultats – Steam", "url": "#" },
+    { "label": "Annonce du concours – Steam", "url": "#" }
+  ]
+}
+,
   {
     "id": 3,
     "slug": "kyvos",
     "title": "Kyvos",
     "year": 2023,
-    "tags": ["Prototype"],
+    "tags": [
+      "Prototype"
+    ],
     "excerpt": "Itérations gameplay et level design.",
     "cover": "images/projets/kyvos/cover.jpg",
     "gallery": [
@@ -48,40 +61,67 @@
     ],
     "text1": "CCC",
     "text2": "Boucles de gameplay et tests.",
-    "text3": "Conclusion & prochaines étapes."
+    "text3": "Conclusion & prochaines étapes.",
+    "status": "Projet terminé, gagnant du concours officiel...",
+    "tools": "FrostKit, Unreal Engine 5",
+    "date": "September 15 2025",
+    "links": [
+      {
+        "label": "Mod",
+        "url": "https://mod.io/…"
+      },
+      {
+        "label": "Annonce des résultats du concours – Steam (Septembre 2025)",
+        "url": "https://store.steampowered.com/…"
+      },
+      {
+        "label": "Annonce du concours – Steam (Juillet 2025)",
+        "url": "https://store.steampowered.com/…"
+      }
+    ]
   },
   {
-    "id": 4,
-    "slug": "red",
-    "title": "Red Dead Reload",
-    "year": 2024,
-    "tags": ["Web", "Jeu"],
-    "excerpt": "Mini-jeu inspiré western.",
-    "cover": "images/projets/red/cover.jpg",
-    "gallery": [
-      "images/projets/red/Capture d’écran 2025-10-22 120752.png",
-      "images/projets/red/cover.jpg",
-      "images/projets/red/Capture d’écran 2025-10-22 120729.png"
-    ],
-    "text1": "VVV",
-    "text2": "Système de tir et UI.",
-    "text3": "Retours utilisateurs."
-  },
+  "id": 4,
+  "slug": "red",
+  "title": "Red Dead Reload",
+  "year": 2024,
+  "tags": ["Web", "Jeu"],
+  "excerpt": "Mini-jeu inspiré western.",
+  "cover": "images/projets/red/cover.jpg",
+  "gallery": [
+    "images/projets/red/Capture d’écran 2025-10-22 120752.png",
+    "images/projets/red/cover.jpg",
+    "images/projets/red/Capture d’écran 2025-10-22 120729.png"
+  ],
+  "text1": "VVV",
+  "text2": "Système de tir et UI.",
+  "text3": "Retours utilisateurs.",
+  "links": [
+      { "label": "ArtStation", "url": "https://www.artstation.com/yourprofile" },
+      { "label": "Sketchfab", "url": "https://sketchfab.com/yourprofile" }
+  ]
+}
+,
   {
-    "id": 5,
-    "slug": "3d",
-    "title": "Modélisation 3D",
-    "year": 2022,
-    "tags": ["Personnage"],
-    "excerpt": "Modélisation 3D.",
-    "cover": "images/projets/3d/cover.png",
-    "gallery": [
-      "images/projets/3d/Rendus_01.png",
-      "images/projets/3d/Rendus_07.png",
-      "images/projets/3d/Rendus_09.jpg"
-    ],
-    "text1": "DDD",
-    "text2": "Pipeline : blockout → sculpt → bake → texture.",
-    "text3": "Rendu final et lighting."
-  }
+  "id": 5,
+  "slug": "3d",
+  "title": "Modélisation 3D",
+  "year": 2022,
+  "tags": ["Personnage"],
+  "excerpt": "Modélisation 3D.",
+  "cover": "images/projets/3d/cover.png",
+  "gallery": [
+    "images/projets/3d/Rendus_01.png",
+    "images/projets/3d/Rendus_07.png",
+    "images/projets/3d/Rendus_09.jpg"
+  ],
+  "text1": "DDD",
+  "text2": "Pipeline : blockout → sculpt → bake → texture.",
+  "text3": "Rendu final et lighting.",
+  "links": [
+    { "label": "ArtStation", "url": "#" },
+    { "label": "Sketchfab", "url": "#" }
+  ]
+}
+
 ]

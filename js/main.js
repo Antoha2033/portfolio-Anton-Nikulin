@@ -227,30 +227,64 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 
- // Map nav links to their target sections
+document.addEventListener('DOMContentLoaded', () => {
+  // 1) Read CSS var BEFORE using it
+  const cssHeader = getComputedStyle(document.documentElement)
+    .getPropertyValue('--header-h').trim();
+  const headerH = parseFloat(cssHeader) || 80;
+
+  // 2) Burger toggle (works on both pages)
+  const btn  = document.querySelector('.nav__toggle');
+  const menu = document.getElementById('site-menu');
+
+  if (btn && menu) {
+    const closeMenu = () => {
+      menu.classList.remove('is-open');
+      btn.setAttribute('aria-expanded', 'false');
+    };
+
+    btn.addEventListener('click', () => {
+      const open = menu.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', String(open));
+    });
+
+    // Close when a link inside the panel is clicked
+    menu.addEventListener('click', e => {
+      if (e.target.closest('a')) closeMenu();
+    });
+
+    // Close on ESC
+    window.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeMenu();
+    });
+
+    // Close if we grow past desktop
+    const mq = window.matchMedia('(min-width: 1001px)');
+    const handleMQ = e => { if (e.matches) closeMenu(); };
+    mq.addEventListener ? mq.addEventListener('change', handleMQ)
+                        : mq.addListener(handleMQ);
+  }
+
+  // 3) Active-link observer (only for same-page anchors)
   const links = Array.from(document.querySelectorAll('.nav__link[href^="#"]'));
   const sections = links
     .map(a => document.querySelector(a.getAttribute('href')))
     .filter(Boolean);
 
-  // Helper: set active link
-  const setActive = (id) => {
-    links.forEach(a => {
-      const match = a.getAttribute('href') === `#${id}`;
-      a.classList.toggle('is-active', match);
-    });
-  };
+  if (sections.length) {
+    const setActive = (id) => {
+      links.forEach(a => a.classList.toggle('is-active', a.getAttribute('href') === `#${id}`));
+    };
 
-  // Observe sections entering the viewport
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        setActive(entry.target.id);
-      }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) setActive(entry.target.id);
+      });
+    }, {
+      rootMargin: `-${headerH + 8}px 0px -70% 0px`,
+      threshold: [0, 0.25, 0.6]
     });
-  }, {
-  rootMargin: `-${headerH + 8}px 0px -70% 0px`,   // push activation even higher
-  threshold: [0, 0.25, 0.6]
-  });
 
-  sections.forEach(sec => io.observe(sec));
+    sections.forEach(sec => io.observe(sec));
+  }
+});

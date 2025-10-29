@@ -3,10 +3,22 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>Projet -  Anton Nikulin</title>
+  <title>Projet - Anton Nikulin</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Portfolio d’Anton Nikulin — projets web, jeux 2D/VR, et expériences interactives.">
   <link rel="stylesheet" href="css/projets.css" />
+
+  <script defer src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script defer src="js/projet.js"></script>
+  
+
+  <style>
+    [v-cloak] {
+      display: none
+    }
+  </style> <!-- hide mustaches until Vue mounts -->
 
 </head>
 
@@ -17,151 +29,159 @@
   </video>
 
 
-
-<main id="main" class="wrap">
-  <div id="project-app">
-    <!-- Loading / error -->
-    <div v-if="loading" class="notice notice--muted">Chargement…</div>
-    <div v-else-if="error" class="notice notice--danger" role="alert">{{ error }}</div>
-
-    <!-- Project -->
-    <article v-else class="project">
-      <!-- Cover -->
-      <header>
-        <nav class="wrap header__bar">
-          <a class="logo" href="index.html">Anton Nikulin</a>
-          <nav class="nav__list">
-            <a class="nav__link" href="#a-propos">À propos</a>
-            <a class="nav__link" href="#pertinaces">Pertinaces</a>
-            <a class="nav__link" href="#projects">Projets</a>
-            <a class="nav__link" href="#contact">Contact</a>
-          </nav>
-    
-        </nav>
-      </header>
-
-      <!-- Title + meta + excerpt -->
-      <section class="project__info">
-        <h1 class="project__title">{{ project.title }}</h1>
-
-        <ul class="project__meta">
-          <li v-for="(t,i) in (project.tags || [])" :key="i" class="chip">{{ t }}</li>
-          <li v-if="project.year" class="chip chip--dim">{{ project.year }}</li>
-        </ul>
-
-        <p v-if="project.excerpt" class="project__excerpt">{{ project.excerpt }}</p>
-      </section>
-
-<!-- Alternating case-study slices (1 & 3 left, 2 right) -->
-<section id="case-study" class="project-casestudy" v-if="project">
-  <article
-    v-for="(img, idx) in project.gallery.slice(0,3)"
-    :key="'slice-'+idx"
-    :class="['project-slice', (idx === 0 || idx === 2) ? 'left' : 'right']"
-  >
-    <!-- Slices 1 & 3: image LEFT, text RIGHT -->
-    <template v-if="idx === 0 || idx === 2">
-      <div class="media reveal-left">
-        <img :src="img" :alt="project.title + ' ' + (idx+1)">
-      </div>
-      <div class="copy reveal-right">
-        <h3 v-text="['Texte 1','Texte 2','Texte 3'][idx]"></h3>
-        <p v-text="project['text' + (idx+1)]"></p>
-      </div>
-    </template>
-
-    <!-- Slice 2: text LEFT, image RIGHT -->
-    <template v-else>
-      <div class="copy reveal-left">
-        <h3>Texte 2</h3>
-        <p v-text="project.text2"></p>
-      </div>
-      <div class="media reveal-right">
-        <img :src="img" :alt="project.title + ' 2'">
-      </div>
-    </template>
-  </article>
-</section>
+  <header>
+  <nav class="wrap header__bar">
+    <a class="logo" href="index.html">Anton Nikulin</a>
+    <button class="nav__toggle" aria-label="Ouvrir le menu"
+            aria-controls="site-menu" aria-expanded="false">☰</button>
 
 
-      
-    </article>
-  </div>
-</main>
+    <!-- Sliding panel WITH the expected id -->
+    <nav id="site-menu" class="nav__list">
+      <a class="nav__link" href="index.html#a-propos">À propos</a>
+      <a class="nav__link" href="index.html#pertinaces">Mes Spécialités</a>
+      <a class="nav__link" href="index.html#projects">Mes Projets</a>
+      <a class="nav__link" href="#contact">Contactez-moi</a>
+    </nav>
+  </nav>
+</header>
+
+
+  <main id="main" class="wrap">
+    <div id="project-app" v-cloak>
+      <!-- Loading / error -->
+      <div v-if="loading" class="notice notice--muted">Chargement…</div>
+      <div v-else-if="error" class="notice notice--danger" role="alert">{{ error }}</div>
+
+      <!-- Project -->
+      <article v-else class="project">
+        <!-- Cover -->
 
 
 
-    <script defer src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
-    <script defer src="js/carousel.js"></script>
-    <script defer src="js/projet.js"></script>
 
-    <!-- (optional) chart libs you had -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3"></script>
+        <!-- Intro -->
+        <section id="intro" class="intro" aria-label="Introduction">
+          <div class="wrap intro__wrap">
+            <div class="intro__stack">
+              <p class="intro__tag"><span class="year">{{ project.year }}</span></p>
+              <h1 class="intro__name" data-anim="name">{{ project.title }}</h1>
 
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+              <div class="intro__meta" v-if="project">
+                <ul v-if="project.tags && project.tags.length" class="chips" aria-label="Tags">
+                  <li v-for="(t,i) in project.tags" :key="i" class="chip">{{ t }}</li>
+                </ul>
+                <p v-if="project.excerpt" class="intro__excerpt">{{ project.excerpt }}</p>
+              </div>
 
-<script>
-  (() => {
-    // Respect reduced motion
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  
-    function initScrollAnims() {
-      if (!window.gsap || !window.ScrollTrigger) return;
-      gsap.registerPlugin(ScrollTrigger);
-  
-      document.querySelectorAll('.project-slice').forEach((slice) => {
-        const isLeft = slice.classList.contains('left');  // slices 1 & 3
-        const media  = slice.querySelector('.media');
-        const copy   = slice.querySelector('.copy');
-        const dx     = isLeft ? -80 : 80;                 // image slides from its side
-        const dxText = -dx;                               // text slides from opposite side
-  
-        if (media) {
-          gsap.from(media, {
-            x: dx,
-            autoAlpha: 0,
-            duration: 0.9,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: slice,
-              start: 'top 80%',
-              toggleActions: 'play none none reverse'
-            }
-          });
-        }
-  
-        if (copy) {
-          gsap.from(copy, {
-            x: dxText,
-            autoAlpha: 0,
-            duration: 0.9,
-            ease: 'power3.out',
-            delay: 0.1,
-            scrollTrigger: {
-              trigger: slice,
-              start: 'top 80%',
-              toggleActions: 'play none none reverse'
-            }
-          });
-        }
-      });
-    }
-  
-    // Run when .project-slice elements exist (works even with Vue async render)
-    const ready = () => document.querySelector('.project-slice');
-    if (ready()) {
-      initScrollAnims();
-    } else {
-      const obs = new MutationObserver(() => {
-        if (ready()) { obs.disconnect(); initScrollAnims(); }
-      });
-      obs.observe(document.documentElement, { childList: true, subtree: true });
-    }
-  })();
-  </script>
-  
+            </div>
+          </div>
+        </section>
 
-</body> 
-</html>
+
+
+
+
+
+        <!-- Alternating slices (uses your existing CSS classes) -->
+        <section class="project-casestudy" v-if="project">
+          <article v-for="(img,idx) in project.gallery.slice(0,3)" :key="idx"
+            :class="['project-slice', (idx===0||idx===2)?'left':'right']">
+            <template v-if="idx===0||idx===2">
+              <div class="media"><img :src="img" :alt="project.title + ' '+(idx+1)"></div>
+              <div class="copy">
+                <h3>Texte {{idx+1}}</h3>
+                <p v-text="project['text'+(idx+1)]"></p>
+              </div>
+            </template>
+            <template v-else>
+              <div class="copy">
+                <h3>Texte 2</h3>
+                <p v-text="project.text2"></p>
+              </div>
+              <div class="media"><img :src="img" :alt="project.title + ' 2'"></div>
+            </template>
+          </article>
+        </section>
+
+
+        <!-- More media (carousel) -->
+        <section class="project-media" v-if="project && project.gallery?.length">
+          <div class="wrap project-media__inner">
+            <h2 class="project-media__title">Plus d’images</h2>
+            <div id="media-carousel">
+              <carousel-media :items="project.gallery" :altprefix="project.title"></carousel-media>
+            </div>
+          </div>
+        </section>
+
+
+
+        <!-- Informations & Liens -->
+        <section class="info" aria-labelledby="info-title">
+          <div class="info__wrap">
+            <h2 id="info-title" class="info__title">Information supplémentaire sur le projet</h2>
+
+            <dl class="info__list">
+              <div class="info__item">
+                <dt class="info__label">Statut :</dt>
+                <dd class="info__value">
+                  {{ project.status }}
+                  <!-- or static text:
+          Projet terminé, gagnant du concours officiel Frostpunk 2 (catégorie Frostlands Mod).
+          -->
+                </dd>
+              </div>
+
+              <div class="info__item">
+                <dt class="info__label">Outils utilisés :</dt>
+                <dd class="info__value">
+                  {{ project.tools }}
+                  <!-- ex: FrostKit, Unreal Engine 5 -->
+                </dd>
+              </div>
+
+              <div class="info__item">
+                <dt class="info__label">Date :</dt>
+                <dd class="info__value">
+                  {{ project.date }}
+                  <!-- ex: September 15 2025 -->
+                </dd>
+              </div>
+            </dl>
+
+            <ul class="info__links" role="list" v-if="project && project.links && project.links.length">
+              <li v-for="(l,i) in project.links" :key="i">
+                <a :href="l.url" target="_blank" rel="noopener">
+                  {{ l.label }} <span aria-hidden="true">↗</span>
+                </a>
+              </li>
+            </ul>
+
+          </div>
+        </section>
+
+
+
+
+
+        <!-- Contacts -->
+        <section id="contact" class="section contact" aria-labelledby="contact-title">
+          <div class="wrap">
+            <h2 id="contact-title">Contactez-moi</h2>
+
+            <ul class="contact__links">
+              <li><a class="contact__btn" href="mailto:anton.yourmail@example.com">Envoyez-moi un email</a></li>
+              <li><a class="contact__btn" href="https://www.linkedin.com/in/ton-profil" target="_blank"
+                  rel="noopener">LinkedIn</a></li>
+              <li><a class="contact__btn" href="https://www.instagram.com/tonprofil" target="_blank"
+                  rel="noopener">Instagram</a></li>
+            </ul>
+
+            <p class="contact__note"></p>
+          </div>
+        </section>
+
+
+    </div>
+</body>

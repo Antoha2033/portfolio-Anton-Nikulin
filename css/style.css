@@ -35,6 +35,8 @@
   --panel-bg: hsl(0 0% 100% / 0.06);
   --panel-stroke: hsl(0 0% 100% / 0.15);
   --panel-shadow: 0 8px 30px hsl(0 0% 0% / 0.25);
+
+  
   
 }
 
@@ -67,38 +69,34 @@ body > *:not(#bg-video):not(#bg-overlay):not(header){ position:relative; z-index
    HEADER
 ========================= */
 
-:root{ --header-h: clamp(58px, 6vw, 84px); } /* header height dial */
+:root { --header-h: clamp(58px, 6vw, 84px); } /* header height dial */
 
 header{
   position: fixed;
   top: 0; left: 0; right: 0;
   height: var(--header-h);
   z-index: 1000;
-
-  /* keep text readable over the background */
   background: rgba(0,0,0,.15);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
 }
 
-main{ padding-top: calc(var(--header-h) + 12px); }
-
+main { padding-top: calc(var(--header-h) + 12px); }
 
 .header__bar{
   display: flex;
   align-items: center;
-  justify-content: space-between;     /* keep left/right layout; change to 'center' if you want everything centered in a row */
+  justify-content: space-between;
   height: 100%;
-  max-width: 1000px;          /* centers the header content */
+  max-width: 1000px;
   margin-inline: auto;
   padding-inline: var(--page-gutter);
 }
 
 .logo{ color:#fff; font-weight:700; font-size:25px; }
-.nav__list{ display:flex; gap:30px; list-style:none; margin:0; padding:0; font-size: 20px; }
-.nav__list a{ color:#fff; }
 
-/* === Nav link hover + active underline === */
+/* ---- Links (shared) ---- */
+.nav__list a{ color:#fff; }
 .nav__link{
   position: relative;
   display: inline-block;
@@ -107,33 +105,82 @@ main{ padding-top: calc(var(--header-h) + 12px); }
   color: var(--fg, #fff);
   transition: color .25s ease;
 }
-
 .nav__link::after{
   content: "";
   position: absolute;
   left: 0; right: 0;
-  bottom: 0;                 /* underline hugs the text baseline */
-  height: 2px;               /* tweak thickness */
-  background: var(--accent); /* your gold/yellow */
+  bottom: 0;
+  height: 2px;
+  background: var(--accent);
   transform: scaleX(0);
   transform-origin: 50% 50%;
   transition: transform .28s ease-in-out;
 }
-
-/* On hover OR when the link is active (current section) */
 .nav__link:hover,
-.nav__link.is-active{
-  color: var(--accent);
-}
+.nav__link.is-active{ color: var(--accent); }
 .nav__link:hover::after,
-.nav__link.is-active::after{
-  transform: scaleX(1);
+.nav__link.is-active::after{ transform: scaleX(1); }
+
+@media (prefers-reduced-motion: reduce){
+  .nav__link::after, .nav__link{ transition: none; }
 }
 
-/* Motion-friendly fallback */
-@media (prefers-reduced-motion: reduce){
-  .nav__link::after{ transition: none; }
-  .nav__link{ transition: none; }
+/* =========================
+   MOBILE FIRST (<=1000px)
+========================= */
+.nav__toggle { 
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px; height: 44px;
+  font-size: 1.6rem; line-height: 1;
+  border: 0; border-radius: 10px;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  z-index: 1001; /* above the panel */
+}
+
+/* Off-canvas panel closed by default */
+.nav__list{
+  position: fixed;
+  top: 0; right: 0;
+  width: min(78vw, 320px);
+  height: 100dvh;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(12px);
+  transform: translateX(100%);     /* hidden */
+  transition: transform .28s ease; /* smooth slide; exists only on mobile */
+  z-index: 1000;
+}
+.nav__list.is-open { transform: translateX(0); }
+.nav__list .nav__link{ display:block; padding:12px 4px; font-size:1.2rem; }
+
+/* =========================
+   DESKTOP (>1000px)
+========================= */
+@media (min-width: 1001px){
+  .nav__toggle { display: none; }
+  .nav__list{
+    position: static;      /* back in the flow */
+    height: auto;
+    width: auto;
+    padding: 0;
+    transform: none;       /* no slide effect on desktop */
+    transition: none;      /* prevent any flash at the breakpoint */
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    font-size: 20px;
+    background: transparent;
+    backdrop-filter: none;
+  }
 }
 
 
@@ -141,7 +188,6 @@ main{ padding-top: calc(var(--header-h) + 12px); }
 /* =========================
    INTRO
 ========================= */
-/* small label above the name */
 
 /* small label above the name */
 .intro__tag{
@@ -182,7 +228,6 @@ main{ padding-top: calc(var(--header-h) + 12px); }
   padding-block: var(--pad-block);
   scroll-margin-top:80px;
 }
-#a-propos .textes{ max-width:100ch; justify-self:start; }
 #a-propos h2#about-title{ font-size: clamp(2rem, 1.2rem + 3vw, 3.25rem); line-height:1.1; margin:0 0 .75em; color: var(--accent);}
 #a-propos p{ font-size: clamp(1.05rem, .9rem + .7vw, 1.35rem); line-height:1.8; margin:0 0 1.1em; }
 #a-propos .color{ color:var(--accent); font-weight:700; }
@@ -200,11 +245,33 @@ transition: background-color .25s ease, color .25s ease, transform .15s ease;}
   font-weight:700; letter-spacing:.08em;
   background: rgba(255,255,255,.08); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
   box-shadow: 0 12px 48px rgba(0,0,0,.28); justify-self:end;
+  
 }
-@media (max-width:900px){
-  .about .about__grid{ grid-template-columns:1fr; text-align:center; }
-  #a-propos .photo{ order:-1; margin-bottom:1.25rem; }
+@media (max-width: 900px) {
+  /* One column layout */
+  .about .about__grid {
+    grid-template-columns: 1fr;
+    justify-items: center;  /* center all grid children horizontally */
+    /* align-items: start;   optional, keeps items starting at top of their grid area */
+    row-gap: clamp(1rem, 2vw, 1.5rem);
+  }
+
+  /* Put the photo first and center it */
+  #a-propos .photo {
+    order: -1;               /* move before text on mobile */
+    justify-self: center;    /* override the desktop justify-self:end */
+    margin-inline: auto;     /* safe extra centering */
+    margin-bottom: 1.25rem;  /* your existing spacing */
+  }
+
+  /* Center the text block too (optional but usually desired) */
+  #a-propos .textes {
+    justify-self: center;
+    text-align: center;
+    max-width: 70ch;         /* tidy line length on small screens */
+  }
 }
+
 /* kill any leftover fades */
 #a-propos{ opacity:1 !important; transform:none !important; animation:none !important; transition:none !important; }
 

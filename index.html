@@ -4,6 +4,19 @@
 <head>
   <meta charset="UTF-8" />
   <title>Accueil - Anton Nikulin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <style>
+    /* Respect users who prefer less motion */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Portfolio d’Anton Nikulin — projets web, jeux 2D/VR, et expériences interactives.">
   <link rel="stylesheet" href="css/style.css" />
@@ -17,26 +30,29 @@
   </video>
 
   <!-- Header -->
-  <header>
-    <nav class="wrap header__bar">
-      <a class="logo" href="index.html">Anton Nikulin</a>
-      <nav class="nav__list">
-        <a class="nav__link" href="#a-propos">À propos</a>
-        <a class="nav__link" href="#pertinaces">Pertinaces</a>
-        <a class="nav__link" href="#projects">Projets</a>
-        <a class="nav__link" href="#contact">Contact</a>
-      </nav>
+<header>
+  <nav class="wrap header__bar">
+    <a class="logo" href="index.html">Anton Nikulin</a>
+    <button class="nav__toggle" aria-label="Ouvrir le menu"
+            aria-controls="site-menu" aria-expanded="false">☰</button>
 
+    <!-- add id here -->
+    <nav id="site-menu" class="nav__list">
+      <a class="nav__link" href="#a-propos">À propos</a>
+      <a class="nav__link" href="#pertinaces">Mes Spécialités</a>
+      <a class="nav__link" href="#projects">Mes Projets</a>
+      <a class="nav__link" href="#contact">Contactez-moi</a>
     </nav>
-  </header>
+  </nav>
+</header>
 
   <main>
     <!-- Intro -->
     <section id="intro" class="intro" aria-label="Introduction">
       <div class="wrap intro__wrap">
         <div class="intro__stack">
-<p class="intro__tag">PORTFOLIO <span class="year">2025</span></p>
-<h1 class="intro__name" data-anim="name">Anton&nbsp;Nikulin</h1>
+          <p class="intro__tag">PORTFOLIO <span class="year">2025</span></p>
+          <h1 class="intro__name" data-anim="name">Anton&nbsp;Nikulin</h1>
           <div class="intro__cues" aria-hidden="true">
             <span class="cue"></span>
             <span class="cue"></span>
@@ -69,10 +85,10 @@
       </div>
     </section>
 
-    <!-- Pertinaces -->
+    <!-- Spécialités -->
     <section id="pertinaces" class="section pertinaces" aria-labelledby="pertinaces-title">
       <div class="wrap">
-        <h2 id="about-title">Pertinaces</h2>
+        <h2 id="about-title">Mes Spécialités</h2>
 
         <ul class="pertinaces__grid" role="list">
           <li class="pertinaces__item">
@@ -120,7 +136,7 @@
     <!-- Compétences & Logiciels -->
     <section id="logiciels" class="section skills">
       <div class="wrap">
-        <h2>Compétences &amp; Logiciels</h2>
+        <h2>Logiciels</h2>
         <div class="logo-label" id="logoLabel" role="status" aria-live="polite"></div>
         <div class="logo-marquee" aria-label="Logos des logiciels utilisés">
           <ul class="logo-track"></ul>
@@ -131,7 +147,7 @@
     <!-- Projects / Carousel -->
     <section id="projects" class="section projects" aria-labelledby="projects-title">
       <div class="wrap projects__inner">
-        <h2 id="projects-title">Projects</h2>
+        <h2 id="projects-title">Mes Projets</h2>
         <div id="projects-carousel">
           <carousel-projects :items="items"></carousel-projects>
         </div>
@@ -141,7 +157,7 @@
     <!-- Contacts -->
     <section id="contact" class="section contact" aria-labelledby="contact-title">
       <div class="wrap">
-        <h2 id="contact-title">Contacts</h2>
+        <h2 id="contact-title">Contactez-moi</h2>
 
         <ul class="contact__links">
           <li><a class="contact__btn" href="mailto:anton.yourmail@example.com">Envoyez-moi un email</a></li>

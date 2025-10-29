@@ -38,6 +38,9 @@
   
 }
 
+[v-cloak] { display: none; }
+
+
 
 /* Base */
 *{ box-sizing: border-box; }
@@ -49,56 +52,64 @@ a{ color:var(--accent); text-decoration:none; }
 html { scroll-behavior: smooth; }                  /* smooth scroll for in-page anchors */
 section[id] { scroll-margin-top: var(--header-h); }/* offset for fixed header */
 
-
-/* Shared wrappers */
-.wrap{ max-width:var(--page-max); margin-inline:auto; padding-inline:var(--page-gutter); }
 .section{ padding-block: var(--section-space); }
+
 
 /* =========================
    BACKGROUND VIDEO
 ========================= */
-#bg-video{
-  position:fixed; inset:0; width:100vw; height:100vh; object-fit:cover;
-  opacity:.7; z-index:0; pointer-events:none;
+#bg-video {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;            /* dynamic viewport height = correct on mobile */
+  object-fit: cover;         /* scale and crop like a background image */
+  object-position: center;   /* crop from center */
+  z-index: 0;
+  pointer-events: none;
+  opacity: .7;
 }
-body > *:not(#bg-video):not(#bg-overlay):not(header){ position:relative; z-index:1;  }
+
+/* Fallback for browsers without dvh support */
+@supports not (height: 100dvh) {
+  #bg-video { height: 100vh; }
+}
+
+/* Optional extra safety for Safari oddities */
+#bg-video { min-width: 100%; min-height: 100%; }
 
 /* =========================
    HEADER
 ========================= */
 
-:root{ --header-h: clamp(58px, 6vw, 84px); } /* header height dial */
+:root { --header-h: clamp(58px, 6vw, 84px); } /* header height dial */
 
 header{
   position: fixed;
   top: 0; left: 0; right: 0;
   height: var(--header-h);
   z-index: 1000;
-
-  /* keep text readable over the background */
   background: rgba(0,0,0,.15);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
 }
 
-main{ padding-top: calc(var(--header-h) + 12px); }
-
+main { padding-top: calc(var(--header-h) + 12px); }
 
 .header__bar{
   display: flex;
   align-items: center;
-  justify-content: space-between;     /* keep left/right layout; change to 'center' if you want everything centered in a row */
+  justify-content: space-between;
   height: 100%;
-  max-width: 1000px;          /* centers the header content */
+  max-width: 1000px;
   margin-inline: auto;
   padding-inline: var(--page-gutter);
 }
 
 .logo{ color:#fff; font-weight:700; font-size:25px; }
-.nav__list{ display:flex; gap:30px; list-style:none; margin:0; padding:0; font-size: 20px; }
-.nav__list a{ color:#fff; }
 
-/* === Nav link hover + active underline === */
+/* ---- Links (shared) ---- */
+.nav__list a{ color:#fff; }
 .nav__link{
   position: relative;
   display: inline-block;
@@ -107,34 +118,167 @@ main{ padding-top: calc(var(--header-h) + 12px); }
   color: var(--fg, #fff);
   transition: color .25s ease;
 }
-
 .nav__link::after{
   content: "";
   position: absolute;
   left: 0; right: 0;
-  bottom: 0;                 /* underline hugs the text baseline */
-  height: 2px;               /* tweak thickness */
-  background: var(--accent); /* your gold/yellow */
+  bottom: 0;
+  height: 2px;
+  background: var(--accent);
   transform: scaleX(0);
   transform-origin: 50% 50%;
   transition: transform .28s ease-in-out;
 }
-
-/* On hover OR when the link is active (current section) */
 .nav__link:hover,
-.nav__link.is-active{
-  color: var(--accent);
-}
+.nav__link.is-active{ color: var(--accent); }
 .nav__link:hover::after,
-.nav__link.is-active::after{
-  transform: scaleX(1);
+.nav__link.is-active::after{ transform: scaleX(1); }
+
+@media (prefers-reduced-motion: reduce){
+  .nav__link::after, .nav__link{ transition: none; }
 }
 
-/* Motion-friendly fallback */
-@media (prefers-reduced-motion: reduce){
-  .nav__link::after{ transition: none; }
-  .nav__link{ transition: none; }
+/* =========================
+   MOBILE FIRST (<=1000px)
+========================= */
+.nav__toggle { 
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px; height: 44px;
+  font-size: 1.6rem; line-height: 1;
+  border: 0; border-radius: 10px;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  z-index: 1001; /* above the panel */
 }
+
+/* Off-canvas panel closed by default */
+.nav__list{
+  position: fixed;
+  top: 0; right: 0;
+  width: min(78vw, 320px);
+  height: 100dvh;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(12px);
+  transform: translateX(100%);     /* hidden */
+  transition: transform .28s ease; /* smooth slide; exists only on mobile */
+  z-index: 1000;
+}
+.nav__list.is-open { transform: translateX(0); }
+.nav__list .nav__link{ display:block; padding:12px 4px; font-size:1.2rem; }
+
+/* =========================
+   DESKTOP (>1000px)
+========================= */
+@media (min-width: 1001px){
+  .nav__toggle { display: none; }
+  .nav__list{
+    position: static;      /* back in the flow */
+    height: auto;
+    width: auto;
+    padding: 0;
+    transform: none;       /* no slide effect on desktop */
+    transition: none;      /* prevent any flash at the breakpoint */
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    font-size: 20px;
+    background: transparent;
+    backdrop-filter: none;
+  }
+}
+
+
+
+/* =========================
+   INTRO
+========================= */
+
+/* small label above the name */
+.intro__tag{
+  margin: 0 0 .35rem;
+  font-size: clamp(1.05rem, 1.6vw, 1.6rem);
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--fg-dim);       /* subtle */
+  line-height: 1;
+}
+.intro__tag .year{ color: var(--accent); } /* 2025 in gold */
+
+
+
+.intro{ min-height:100vh; min-height:100dvh; }
+.intro__wrap{ min-height:inherit; display:grid; place-items:center; text-align:center; }
+.intro__stack{ transform: translateY(-6vh); }
+.intro__name{ margin:0; font-weight:800; font-size: clamp(2.8rem, 9vw, 8rem); }
+
+@media (min-width:1200px){ .intro__cues{ --cue-size:40px;} }
+.cue{ width:0; height:0; border-left:calc(var(--cue-size)*.5) solid transparent; border-right:calc(var(--cue-size)*.5) solid transparent; border-top:var(--cue-size) solid #e6e6e6; }
+.has-js .intro__name{ opacity:0; transform:translateY(12px); }
+.has-js .cue{ opacity:0; transform:translateY(-8px); }
+@media (prefers-reduced-motion: reduce){ .has-js .intro__name, .has-js .cue{ opacity:1 !important; transform:none !important; } }
+@media (max-width:600px){ .intro__stack{ transform: translateY(-3vh); } .intro__cues{ margin-top:6px; gap:4px; } }
+
+/* ===== Intro meta (tags + excerpt under the title) ===== */
+
+.intro__meta{
+  margin-top: clamp(10px, 1.8vh, 18px);
+  display: grid;
+  gap: clamp(6px, 1.2vh, 10px);
+  justify-items: center;     /* center under the H1, same vibe as the year */
+  text-align: center;
+}
+
+
+/* pill list */
+.chips{
+  display: flex;
+  flex-wrap: wrap;
+  color: var(--year-color, #F4C361);   /* replace the hex if your year uses a different color */
+  gap: 10px;     
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-size: 25px;
+}
+
+.chip {
+  color: currentColor;                 /* inherit the yellow from .chips */
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* excerpt under chips */
+.intro__excerpt{
+  max-width: 68ch;
+  margin: 0;
+  font-size: clamp(1rem, .95rem + .25vw, 1.15rem);
+  line-height: 1.6;
+  color: #fff;
+  font-size: 30px;
+}
+
+/* motion-friendly: if has-js is set, we can start hidden without flash */
+.has-js .intro__meta{ opacity: 0; transform: translateY(8px); }
+@media (prefers-reduced-motion: reduce){
+  .has-js .intro__meta{ opacity: 1 !important; transform: none !important; }
+}
+
+
+
 
 
 
@@ -170,16 +314,34 @@ main{ padding-top: calc(var(--header-h) + 12px); }
   justify-self: end;                               /* push to the right in the grid */
   margin-right: max(calc(50% - 50vw), 0px);        /* bleed to the edge */
   padding-right: clamp(12px, 3vw, 32px);           /* safe gutter from edge */
-  max-width: 600px;                                 /* readable line length */
+  max-width: 600px;   
+                                /* readable line length */
 }
 
 /* keep left-side text (slice 2) hugging the left edge, if not already */
 .project-slice.right .copy {
+  
   justify-self: start;
   margin-left: max(calc(50% - 50vw), 0px);         /* bleed to the left edge */
   padding-left: clamp(12px, 3vw, 32px);
   max-width: 600px;
 }
+
+/* Left-align ONLY the first two text blocks (next to images 1 & 2) */
+.project-casestudy .project-slice:nth-of-type(-n + 2) .copy {
+  text-align: left;            /* align inline content like <h3>, <p> */
+  display: flex;               /* ensure children hug the left edge */
+  flex-direction: column;
+  align-items: flex-start;     /* left edge inside the .copy column */
+}
+
+/* safety: if any heading/paragraph inside was centered globally */
+.project-casestudy .project-slice:nth-of-type(-n + 2) .copy > * {
+  text-align: left;
+  margin-left: 0;
+  margin-right: 0;
+}
+
 
 /* Copy width for comfortable reading */
 .project-slice .copy {
@@ -189,7 +351,7 @@ main{ padding-top: calc(var(--header-h) + 12px); }
 /* Images: responsive, capped at ~700px */
 .project-slice .media img {
   display: block;
-  width: min(700px, 46vw);
+  width: min(800px);
   height: auto;
   border-radius: 12px;                /* optional */
 }
@@ -198,15 +360,193 @@ main{ padding-top: calc(var(--header-h) + 12px); }
 .project-slice.left  .media { justify-self: start; margin-left:  max(calc(50% - 50vw), 0px); }
 .project-slice.right .media { justify-self: end;   margin-right: max(calc(50% - 50vw), 0px); }
 
-/* Mobile: stack, centered */
-@media (max-width: 900px) {
+
+
+/* ≤ 1400px: truly center both pieces (image + text) and stack */
+@media (max-width: 1400px) {
+  /* 1) Single column + center items in the grid */
   .project-slice,
   .project-slice.left,
   .project-slice.right {
     grid-template-columns: 1fr;
+    justify-items: center;             /* center grid items horizontally */
   }
-  .project-slice .media { margin: 0; justify-self: center; }
-  .project-slice .copy  { justify-self: center; text-align: left; }
+
+  /* 2) Order: image first, text second */
+  .project-slice .media { order: 0; }
+  .project-slice .copy  { order: 1; }
+
+  /* 3) Neutralize any edge-bleed / side pushes & force centering */
+  .project-slice .media,
+  .project-slice .copy,
+  .project-slice.left  .copy,
+  .project-slice.right .copy {
+    margin-left: 0;
+    margin-right: 0;
+    margin-inline: auto;               /* logical centering */
+    justify-self: center;              /* override any start/end from desktop */
+  }
+
+  /* 4) Make the text block itself center its inner content */
+  .project-slice .copy {
+    max-width: 70ch;
+    text-align: center;                /* center headings/paragraphs */
+    display: flex;                     /* cancel earlier left-leaning flex */
+    flex-direction: column;
+    align-items: center;               /* center inside the copy column */
+    padding-inline: clamp(12px, 3vw, 32px);
+  }
+
+  /* center the <img> inside the media wrapper */
+  .project-slice .media img {
+    display: block;         /* needed for margin auto centering */
+    margin-inline: auto;    /* centers the image itself */
+    width: min(100%, 900px);
+    height: auto;
+  }
+}
+
+
+
+
+
+/* ===== Project Media Carousel — centered, narrower, no overflow ===== */
+.project-media__inner{
+  max-width: min(1000px, 85vw);
+  margin-inline: auto;
+  padding-inline: 0;
+}
+
+/* comfortable spacing before Contact */
+.project-media{
+  margin-bottom: clamp(40px, 6vw, 120px);
+}
+
+.media-carousel{
+  position: relative;
+  width: 100%;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.02);
+  backdrop-filter: blur(6px);
+  padding: 10px;
+}
+
+.media-carousel .carousel__viewport{
+  width: 100%;
+  height: clamp(400px, 60vw, 740px);  /* pick the band you like */
+  overflow: hidden;
+  border-radius: 12px;
+  min-height: 0;
+}
+
+/* Track / slide inherit that height so images can be 100% tall */
+.media-carousel .carousel__track{ display:flex; height:100%; align-items:stretch; }
+.media-carousel .slide{ min-width:100%; height:100%; display:grid; place-items:center; min-height:0; }
+
+/* Always show the whole image */
+.media-carousel .slide__img{
+  width:100%; height:100%;
+  object-fit: contain;               /* never crops */
+  object-position:center;
+  display:block;
+}
+
+/* arrows overlay inside the band */
+.media-carousel .carousel__controls{
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: space-between;
+  pointer-events: none;
+}
+.media-carousel .nav{
+  pointer-events: auto;
+  width: 42px; height: 42px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.25);
+  background: rgba(0,0,0,.35);
+  color: #fff; font-size: 22px; line-height: 1;
+  display: grid; place-items: center;
+  transition: background .2s ease, transform .15s ease;
+}
+.media-carousel .prev{ margin-left: 6px; }
+.media-carousel .next{ margin-right: 6px; }
+.media-carousel .nav:hover{ background: rgba(0,0,0,.5); transform: scale(1.04); }
+.media-carousel .nav:disabled{ opacity: .45; cursor: not-allowed; }
+.media-carousel .nav:focus-visible{ outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .media-carousel .carousel__track{ transition: none; }
+}
+
+
+
+
+
+
+/* ===== Informations & Liens (simple + centered) ===== */
+
+.info { 
+  padding-block: var(--section-space, 96px);
+  position: relative;
+}
+
+.info__wrap{
+  /* centered block, same idea as your other sections */
+  max-width: 1100px;
+  margin-inline: auto;
+  padding-inline: clamp(16px, 4vw, 40px);
+  
+}
+
+
+
+/* Stack of rows, with comfortable vertical rhythm */
+.info__list{
+  margin: 0 0 1.25rem;
+  padding: 0;
+  display: grid;
+  gap: 1.25rem;              /* space between each Statut / Outils / Date block */
+}
+
+/* Each row = label (yellow) then value (white) */
+.info__item{ margin: 0; }
+
+.info__label{
+  margin: 0 0 .3rem;
+  color: var(--accent, #F1C85A);
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: .02em;
+}
+
+.info__value{
+  margin: 0;
+  color: var(--text, #fff);
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+/* Links list under the rows */
+.info__links{
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: .6rem;
+  font-size: 25px;
+}
+
+.info__links a{
+  color: var(--text, #fff);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color .2s ease, color .2s ease;
+}
+
+.info__links a:hover{
+  color: var(--accent, #F1C85A);
+  border-color: currentColor;
 }
 
 
@@ -277,9 +617,21 @@ CONTACT / FOOTER SECTION
 
 
 
-/* animation helpers */
-.reveal-left,
-.reveal-right {
-  will-change: transform, opacity;
-  transform: translateZ(0);
+
+
+
+
+
+
+
+/* === Unified section H2 === */
+
+
+/* If your H2 has id="info-title" */
+.info__title,
+#contact h2 {
+  font-size: 40px;
+  color: var(--accent);
+  letter-spacing: .02em;
+  margin: 0 0 2rem;
 }
