@@ -52,6 +52,7 @@
   "tools": "Unreal Engine 5, Frostkit.",
   "date": "Septembre 2025",
   "links": [
+    { "label": "Frostpunk 2 | Résultats du concours", "url": "https://www.youtube.com/watch?v=449jRNwjEe8" },
     { "label": "Découvrez mon mod sur Mod.IO", "url": "https://mod.io/g/frostpunk2/m/frostland-reborn#description" },
     { "label": "Annonce des résultats – Steam", "url": "https://store.steampowered.com/news/app/1601580/view/576019638373057148" },
     { "label": "Annonce du concours – Steam", "url": "https://store.steampowered.com/news/app/1601580/view/498325386812199405" }
